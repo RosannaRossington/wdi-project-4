@@ -1,7 +1,7 @@
 var passport = require("passport");
 var User     = require("../models/user");
-var secret   = require("../config/config").secret;
 // create tokens
+var secret   = require("../config/config").secret;
 var jwt      = require("jsonwebtoken");
 
 function register(req, res, next) {

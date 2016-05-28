@@ -7,9 +7,12 @@ var morgan          = require("morgan");
 var methodOverride  = require("method-override");
 var bodyParser      = require("body-parser");
 var mongoose        = require("mongoose");
-var config          = require("./config/config");
 var passport        = require("passport");
 var expressJWT      = require(express-jwt);
+var routes          = require("./config/routes");
+// request to our API will come from a different server so need CORS
+var cors           = require("cors");
+var config          = require("./config/config");
 
 // Create a new app by invoking the express function
 var app             = express();
@@ -37,6 +40,7 @@ app.use(methodOverride(function(req, res) {
   }
 }));
 app.use(passport.initialize());
+app.use(cors());
 
 // ***** JWT AUTHENTICATION ***** //
 // expressJWT checks for a valid JWT token in the header of the HTTP request. It looks for an Authorization Token with the value "Bearer <JWT token>". If it doesn't find one, then it will throw a 403 unauthorized access HTTP status.
@@ -58,8 +62,7 @@ app.use(function (err, req, res, next) {
 });
 
 // ***** ROUTING ***** //
-// var routes = require("./config/routes");
-// app.use("/api", routes);
+app.use("/api", routes);
 
 app.listen(config.port, function(){
 console.log("Express is alive and kicking on port: ", config.port);
