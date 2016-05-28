@@ -9,6 +9,7 @@ var bodyParser      = require("body-parser");
 var mongoose        = require("mongoose");
 var config          = require("./config/config");
 var passport        = require("passport");
+var expressJWT      = require(express-jwt);
 
 // Create a new app by invoking the express function
 var app             = express();
@@ -36,6 +37,25 @@ app.use(methodOverride(function(req, res) {
   }
 }));
 app.use(passport.initialize());
+
+// ***** JWT AUTHENTICATION ***** //
+// expressJWT checks for a valid JWT token in the header of the HTTP request. It looks for an Authorization Token with the value "Bearer <JWT token>". If it doesn't find one, then it will throw a 403 unauthorized access HTTP status.
+// We won't protect the routes for register and login as we need people to be able to access tokens.
+app.use('/api', expressJWT({ secret: config.secret })
+.unless({
+  path: [
+    { url: '/api/login', methods: ['POST'] },
+    { url: '/api/register', methods: ['POST'] }
+  ]
+}));
+
+// Error handling to send a prettier error back as an API response
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    return res.status(401).json({message: 'Unauthorized request.'});
+  }
+  next();
+});
 
 // ***** ROUTING ***** //
 // var routes = require("./config/routes");
