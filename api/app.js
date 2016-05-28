@@ -8,6 +8,7 @@ var methodOverride  = require("method-override");
 var bodyParser      = require("body-parser");
 var mongoose        = require("mongoose");
 var config          = require("./config/config");
+var passport        = require("passport");
 
 // Create a new app by invoking the express function
 var app             = express();
@@ -15,6 +16,9 @@ var app             = express();
 // ***** DATABASE ***** //
 // set up the app.js so it can connect to url
 mongoose.connect(config.database);
+
+// ***** PASSPORT ***** //
+require("./config/passport")(passport);
 
 // ***** MIDDLEWARE ***** //
 // Use the morgan middleware function
@@ -31,6 +35,7 @@ app.use(methodOverride(function(req, res) {
     return method;
   }
 }));
+app.use(passport.initialize());
 
 // ***** ROUTING ***** //
 // var routes = require("./config/routes");

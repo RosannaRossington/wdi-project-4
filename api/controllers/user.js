@@ -1,5 +1,5 @@
 var User   = require('../models/user');
-// Using mongooses methods such as findById 
+// Using mongooses methods such as findById
 function usersIndex(req, res) {
   User.find(function(err, users){
     if (err) return res.status(404).json({ message: 'Something went wrong.' });
@@ -19,7 +19,7 @@ function usersUpdate(req, res){
     if (err) return res.status(500).json(err);
     if (!user) return res.status(404).json(err);
     res.status(200).json({ user: user });
-  })
+  });
 }
 
 function usersDelete(req, res){
