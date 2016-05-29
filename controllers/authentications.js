@@ -59,3 +59,8 @@ function register(req, res, next) {
 
   return localStrategy(req, res, next);
 }
+
+module.exports = {
+  login: login,
+  register: register
+};

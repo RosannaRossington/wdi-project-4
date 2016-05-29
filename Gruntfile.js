@@ -15,7 +15,8 @@ module.exports = function(grunt) {
         mainFiles: {
           bootstrap: [
             'dist/js/bootstrap.js',
-            'dist/css/bootstrap.css'
+            'dist/css/bootstrap.css',
+            'dist/css/bootstrap.map'
           ]
         }
       },

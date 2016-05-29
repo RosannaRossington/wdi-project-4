@@ -13,13 +13,13 @@ function User($resource, API){
       'remove':    { method: 'DELETE' },
       'delete':    { method: 'DELETE' },
       'register':  {
-           url: API +'/register',
-           method: "POST"
-      },
+                     url: API +'/register',
+                     method: "POST"
+                   },
       'login':    {
-         url: API + '/login',
-         method: "POST"
-       }
-}
+                     url: API + '/login',
+                     method: "POST"
+                   }
+    }
   );
 }

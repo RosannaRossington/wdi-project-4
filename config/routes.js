@@ -6,7 +6,7 @@ var usersController           = require('../controllers/users');
 var authenticationsController = require('../controllers/authentications');
 
 // ***** ROUTES ***** //
-//router.post('/login', authenticationsController.login);
+router.post('/login', authenticationsController.login);
 router.post('/register', authenticationsController.register);
 
 router.route('/users')
