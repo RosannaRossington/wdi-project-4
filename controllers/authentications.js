@@ -43,22 +43,6 @@ function login(req, res, next) {
   });
 }
 
-function register(req, res, next) {
-  var localStrategy = passport.authenticate('local-signup', function(err, user, info) {
-    if (err) return res.status(500).json(info);
-    if (info) return res.status(401).json(info);
-    if (!user) return res.status(401).json(info);
-
-    // Send back the token to the front-end to store
-    return res.status(200).json({
-      success: true,
-      message: "Thank you for authenticating",
-      user: user
-    });
-  });
-
-  return localStrategy(req, res, next);
-}
 
 module.exports = {
   login: login,

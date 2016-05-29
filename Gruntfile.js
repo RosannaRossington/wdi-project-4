@@ -4,44 +4,43 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      src: ['src/js/**/*.js','!src/js/_bower.js']
+      src: ['public/src/js/**/*.js','!public/src/js/_bower.js']
   },
     bower_concat: {
       all: {
         dest: {
-          'js': 'src/js/_bower.js',
-          'css': 'src/scss/_bower.scss'
+          'js': 'public/src/js/_bower.js',
+          'css': 'public/src/scss/_bower.scss'
         },
         mainFiles: {
           bootstrap: [
             'dist/js/bootstrap.js',
-            'dist/css/bootstrap.css',
-            'dist/css/bootstrap.map'
+            'dist/css/bootstrap.css'
           ]
-        }
       },
       dependencies: {
-     bootstrap: ["jquery"]
-   }
+        bootstrap: ["jquery"]
+      }
+    },
     },
     sass: {
     expanded: {
       options: { outputStyle: 'expanded' },
-      files: { 'css/app.css': 'src/scss/app.scss' }
+      files: { 'public/css/app.css': 'public/src/scss/app.scss' }
     },
     compressed: {
       options: { outputStyle: 'compressed' },
-      files: { 'css/app.min.css': 'src/scss/app.scss' }
+      files: { 'public/css/app.min.css': 'public/src/scss/app.scss' }
     }
   },
   concat: {
       dist: {
-        src: ['src/js/_bower.js', 'src/js/app.js', 'src/js/**/*.js'],
-        dest: 'js/app.js'
+        src: ['public/src/js/_bower.js', 'public/src/js/app.js', 'public/src/js/**/*.js', 'public/src/js/**/**/*.js'],
+        dest: 'public/js/app.js'
       }
   },
     uglify: {
-      'js/app.min.js': 'js/app.js'
+      'public/js/app.min.js': 'public/js/app.js'
   },
   watch: {
       configFiles: {
@@ -49,12 +48,12 @@ module.exports = function(grunt) {
         options: { reload: true }
       },
       scss: {
-        files: ['src/scss/**/*.scss'],
+        files: ['public/src/scss/**/*.scss'],
         tasks: ['sass'],
         options: { livereload: true }
       },
       js: {
-        files: ['src/js/**/*.js'],
+        files: ['public/src/js/**/*.js'],
         tasks: ['jshint', 'concat', 'uglify'],
         options: { livereload: true }
       },
@@ -99,6 +98,6 @@ module.exports = function(grunt) {
   // Load the plugin that provides the task.
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('default', ['jshint','bower_concat', 'sass:expanded', 'concat', 'uglify', 'replace:development', 'watch']);
+  grunt.registerTask('default', ['jshint','bower_concat', 'sass:expanded', 'concat', 'uglify', 'watch','replace:development']);
   grunt.registerTask('deploy', ['jshint','bower_concat', 'sass:compressed', 'concat', 'uglify', 'replace:production']);
 };

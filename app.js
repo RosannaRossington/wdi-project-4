@@ -69,8 +69,8 @@ app.use(function (err, req, res, next) {
 var routes          = require("./config/routes");
 app.use("/api", routes);
 
-app.use("/", express.static("bower_components"));
 app.use("/", express.static("public"));
+app.use("/", express.static("bower_components"));
 
 app.get("/*", function(req, res){
   res.sendFile(__dirname + "/public/index.html");
