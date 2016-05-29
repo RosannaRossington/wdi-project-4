@@ -32,7 +32,7 @@ function login(req, res, next) {
     if (!user.validatePassword(req.body.password)) return res.status(403).json({ message: 'Authentication failed.' });
 
     var payload = user._id;
-    var token   = jwt.sign(payload, secret, { expiresIn: 60*60*24 })
+    var token   = jwt.sign(payload, secret, { expiresIn: 60*60*24 });
 
     return res.status(200).json({
       success: true,
