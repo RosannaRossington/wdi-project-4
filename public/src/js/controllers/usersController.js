@@ -24,6 +24,7 @@ function UsersController(User, CurrentUser){
   }
 
   function handleLogin(res) {
+    console.log(res);
   }
 
   function handleError(e) {
@@ -31,9 +32,11 @@ function UsersController(User, CurrentUser){
   }
 
   function register() {
+    User.register(self.user, handleLogin, handleError);
   }
 
   function login() {
+    User.login(self.user, handleLogin, handleError);
   }
 
   function logout() {
