@@ -2,6 +2,9 @@ angular
   .module('SustainableApp', ['ngResource', 'ui.router','angular-jwt'])
   .constant('API', 'http://localhost:3000/api')
   .config(Router);
+  // .config(function($httpProvider) {
+  //     $httpProvider.interceptors.push('authInterceptor');
+  //   });
 
 Router.$inject = ['$stateProvider', '$urlRouterProvider'];
 function Router($stateProvider, $urlRouterProvider) {
