@@ -1,11 +1,10 @@
 angular
   .module('SustainableApp', ['ngResource', 'ui.router','angular-jwt'])
   .constant('API', 'http://localhost:3000/api')
-  .config(Router);
-
-  // .config(function($httpProvider) {
-  //     $httpProvider.interceptors.push('authInterceptor');
-  //   });
+  .config(Router)
+  .config(function($httpProvider) {
+      $httpProvider.interceptors.push('authInterceptor');
+    });
 
 Router.$inject = ['$stateProvider', '$locationProvider','$urlRouterProvider'];
 function Router($stateProvider,$locationProvider, $urlRouterProvider) {
@@ -13,15 +12,15 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: "/",
-      templateUrl: "/js/views/home.html",
-      controller:   "UsersController",
-      controllerAs: "user"
+      templateUrl: "src/js/views/home.html"
+      // controller:   "UsersController",
+      // controllerAs: "users"
     })
     .state('login', {
       url: "/login",
-      templateUrl: "/src/js/views/authentications/login.html",
-      controller:   "UsersController",
-      controllerAs: "user"
+      templateUrl: "/src/js/views/authentications/login.html"
+      // controller:   "UsersController",
+      // controllerAs: "users"
     })
     .state('register', {
       url: "/register",
