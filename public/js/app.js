@@ -48745,11 +48745,12 @@ function UsersController(User, CurrentUser, $state){
   function getUsers() {
     User.query(function(data){
       self.all = data.users;
+      console.log("UCtrl" + self.all);
     });
   }
 
   function handleLogin(res) {
-    console.log(res);
+    console.log("handleLogin" + res);
 
       var token = res.token ? res.token : null;
       if (token) {
@@ -48825,7 +48826,7 @@ AuthInterceptor.$inject = ["API", "TokenService"];
 
 function AuthInterceptor(API, TokenService) {
     return {
-    
+
         request: function(config) {
             var token = TokenService.getToken();
 
@@ -48836,7 +48837,7 @@ function AuthInterceptor(API, TokenService) {
         },
 
         response: function(res) {
-            console.log(res);
+            console.log("Auth" + res);
             if (res.config.url.indexOf(API) === 0 && res.data.token) {
                 TokenService.setToken(res.data.token);
             }

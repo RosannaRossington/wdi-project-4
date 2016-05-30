@@ -20,11 +20,12 @@ function UsersController(User, CurrentUser, $state){
   function getUsers() {
     User.query(function(data){
       self.all = data.users;
+      console.log("UCtrl" + self.all);
     });
   }
 
   function handleLogin(res) {
-    console.log(res);
+    console.log("handleLogin" + res);
 
       var token = res.token ? res.token : null;
       if (token) {

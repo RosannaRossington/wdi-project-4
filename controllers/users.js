@@ -1,5 +1,5 @@
 var User   = require('../models/user');
-// Using mongooses methods such as findById
+
 function usersIndex(req, res) {
   User.find(function(err, users){
     if (err) return res.status(404).json({ message: 'Something went wrong.' });

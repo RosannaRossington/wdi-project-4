@@ -1,1 +1,14 @@
 <h1>home</h1>
+
+<!-- user enters url here and scraper runs -->
+<input type="text" ng-model="searchBox">
+
+<p>{{ users.user.email }}</p>
+
+<p>Rosie</p>
+<p>Jessie</p>
+<p>Thomas</p>
+
+
+<li ng-repeat=" | filter:searchBox">
+</li>
