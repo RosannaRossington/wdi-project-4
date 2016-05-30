@@ -1,11 +1,11 @@
 var express  = require('express');
 var router   = express.Router();
 
-// ***** CONTROLLERS ***** //
 var usersController           = require('../controllers/users');
 var authenticationsController = require('../controllers/authentications');
+var materialsController       = require('../controllers/materials');
 
-// ***** ROUTES ***** //
+
 router.post('/login', authenticationsController.login);
 router.post('/register', authenticationsController.register);
 
@@ -17,5 +17,8 @@ router.route('/users/:id')
   .put(usersController.update)
   .patch(usersController.update)
   .delete(usersController.delete);
+
+router.route('/materials')
+  .get(materialsController.index);
 
 module.exports = router;

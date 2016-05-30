@@ -48679,11 +48679,10 @@ angular.module('ui.router.state')
 angular
   .module('SustainableApp', ['ngResource', 'ui.router','angular-jwt'])
   .constant('API', 'http://localhost:3000/api')
-  .config(Router);
-
-  // .config(function($httpProvider) {
-  //     $httpProvider.interceptors.push('authInterceptor');
-  //   });
+  .config(Router)
+  .config(function($httpProvider) {
+      $httpProvider.interceptors.push('authInterceptor');
+    });
 
 Router.$inject = ['$stateProvider', '$locationProvider','$urlRouterProvider'];
 function Router($stateProvider,$locationProvider, $urlRouterProvider) {
@@ -48691,15 +48690,15 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: "/",
-      templateUrl: "/js/views/home.html",
-      controller:   "UsersController",
-      controllerAs: "user"
+      templateUrl: "src/js/views/home.html"
+      // controller:   "UsersController",
+      // controllerAs: "users"
     })
     .state('login', {
       url: "/login",
-      templateUrl: "/src/js/views/authentications/login.html",
-      controller:   "UsersController",
-      controllerAs: "user"
+      templateUrl: "/src/js/views/authentications/login.html"
+      // controller:   "UsersController",
+      // controllerAs: "users"
     })
     .state('register', {
       url: "/register",
@@ -48728,14 +48727,14 @@ angular
   .module('SustainableApp')
   .controller('UsersController', UsersController);
 
-UsersController.$inject = ['User'];
-function UsersController(User){
+UsersController.$inject = ['User', 'CurrentUser','$state'];
+function UsersController(User, CurrentUser, $state){
 
   var self = this;
 
   self.all           = [];
   self.user          = null;
-  //self.currentUser   = null;
+  self.currentUser   = null;
   self.error         = null;
   self.getUsers      = getUsers;
   self.register      = register;
@@ -48754,9 +48753,12 @@ function UsersController(User){
 
       var token = res.token ? res.token : null;
       if (token) {
-          // save the token in local storage
-          // save the current user with the token
+        if (token) {
+      self.getUsers();
+      $state.go('home');
+        }
       }
+    self.currentUser = CurrentUser.getUser();
   }
 
   function handleError(e) {
@@ -48772,9 +48774,14 @@ function UsersController(User){
   }
 
   function logout() {
+    self.all         = [];
+    self.currentUser = null;
+    CurrentUser.clearUser();
   }
 
   function checkLoggedIn() {
+    self.currentUser = CurrentUser.getUser();
+    return !!self.currentUser;
   }
 
   if (checkLoggedIn()) {
@@ -48809,3 +48816,89 @@ function User($resource, API){
     }
   );
 }
+
+angular
+    .module('SustainableApp')
+    .factory('authInterceptor', AuthInterceptor);
+
+AuthInterceptor.$inject = ["API", "TokenService"];
+
+function AuthInterceptor(API, TokenService) {
+    return {
+    
+        request: function(config) {
+            var token = TokenService.getToken();
+
+            if (config.url.indexOf(API) === 0 && token) {
+                config.headers.Authorization = 'Bearer ' + token;
+            }
+            return config;
+        },
+
+        response: function(res) {
+            console.log(res);
+            if (res.config.url.indexOf(API) === 0 && res.data.token) {
+                TokenService.setToken(res.data.token);
+            }
+            return res;
+        }
+    };
+}
+
+angular
+  .module('SustainableApp')
+  .service("CurrentUser", CurrentUser);
+
+CurrentUser.$inject = ["TokenService"];
+function CurrentUser(TokenService){
+    var self = this;
+    self.getUser = getUser;
+    self.clearUser = clearUser;
+    self.user = getUser();
+
+    function getUser() {
+        return self.user ? self.user : TokenService.decodeToken();
+    }
+
+    function clearUser(){
+      self.user = null;
+      TokenService.removeToken();
+    }
+}
+
+angular
+  .module('SustainableApp')
+  .service('TokenService', TokenService);
+
+  TokenService.$inject = ["$window", "jwtHelper"];
+  function TokenService($window, jwtHelper){
+        var self = this;
+
+        self.setToken = setToken;
+        self.getToken = getToken;
+        self.removeToken = removeToken;
+        self.decodeToken = decodeToken;
+
+  //actually "save"Token
+        function setToken(token){
+          return $window.localStorage.setItem('auth-token', token);
+        }
+  //when sending a req to API - (if) get the token from local storage and set it as the header for the request.
+        function getToken() {
+          return $window.localStorage.getItem('auth-token');
+        }
+
+        function removeToken() {
+        return $window.localStorage.removeItem('auth-token');
+      }
+
+
+  // Get the token. Valid? decode it using the jwtHelper and return data
+        function decodeToken() {
+          var token = self.getToken();
+          if (token) {
+            var decodedUser = jwtHelper.decodeToken(token);
+            return token ? decodedUser : null;
+          }
+        }
+    }

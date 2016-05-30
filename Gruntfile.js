@@ -1,11 +1,10 @@
 module.exports = function(grunt) {
-  // Do grunt-related things in here
 
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON('public/package.json'),
     jshint: {
-      src: ['public/src/js/**/*.js','!public/src/js/_bower.js']
-  },
+      files: ['public/src/js/**/*.js','!public/src/js/_bower.js']
+    },
     bower_concat: {
       all: {
         dest: {
@@ -24,25 +23,25 @@ module.exports = function(grunt) {
     },
     },
     sass: {
-    expanded: {
-      options: { outputStyle: 'expanded' },
-      files: { 'public/css/app.css': 'public/src/scss/app.scss' }
+      expanded: {
+        options: { outputStyle: 'expanded' },
+        files: { 'public/css/app.css': 'public/src/scss/app.scss' }
+      },
+      compressed: {
+        options: { outputStyle: 'compressed' },
+        files: { 'public/css/app.min.css': 'public/src/scss/app.scss' }
+      }
     },
-    compressed: {
-      options: { outputStyle: 'compressed' },
-      files: { 'public/css/app.min.css': 'public/src/scss/app.scss' }
-    }
-  },
-  concat: {
+    concat: {
       dist: {
-        src: ['public/src/js/_bower.js', 'public/src/js/app.js', 'public/src/js/**/*.js', 'public/src/js/**/**/*.js'],
+        src: ['public/src/js/_bower.js', 'public/src/js/app.js', 'public/src/js/**/*.js'],
         dest: 'public/js/app.js'
       }
-  },
+    },
     uglify: {
       'public/js/app.min.js': 'public/js/app.js'
-  },
-  watch: {
+    },
+    watch: {
       configFiles: {
         files: ['Gruntfile.js', 'package.json'],
         options: { reload: true }
@@ -94,9 +93,14 @@ module.exports = function(grunt) {
     }
   });
 
-
-  // Load the plugin that provides the task.
-  require('load-grunt-tasks')(grunt);
+  // require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks("grunt-bower-concat");
+  grunt.loadNpmTasks("grunt-contrib-concat");
+  grunt.loadNpmTasks("grunt-contrib-jshint");
+  grunt.loadNpmTasks("grunt-contrib-uglify");
+  grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-replace");
+  grunt.loadNpmTasks("grunt-sass");
 
   grunt.registerTask('default', ['jshint','bower_concat', 'sass:expanded', 'concat', 'uglify', 'watch','replace:development']);
   grunt.registerTask('deploy', ['jshint','bower_concat', 'sass:compressed', 'concat', 'uglify', 'replace:production']);
