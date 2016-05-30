@@ -10,8 +10,13 @@
     </div>
 
     <div class="form-group">
-      <label for="fullname">Full name</label>
-      <input type="text" class="form-control" id="fullname" placeholder="Full name" ng-model="users.user.fullname">
+      <label for="firstname">First name</label>
+      <input type="text" class="form-control" id="firstname" placeholder="First name" ng-model="users.user.firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Last name</label>
+      <input type="text" class="form-control" id="lastname" placeholder="Last name" ng-model="users.user.lastName">
     </div>
 
     <div class="form-group">
@@ -33,6 +38,11 @@
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="users.user.password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password Confirmation</label>
+      <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="Password Confirmation" ng-model="users.user.passwordConfirmation" required>
     </div>
 
     <div class="alert alert-danger" role="alert" ng-messages="users.registerForm['password'].$error" ng-show="(users.registerForm.$submitted && users.registerForm['password'].$invalid)">
