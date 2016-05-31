@@ -10,8 +10,8 @@ function register(req, res, next) {
     if (info) return res.status(401).json(info);
     if (!user) return res.status(401).json(info);
 
-    var payload = {_id: user._id};
-    var token   = jwt.sign(payload, secret, { expiresIn: 60*60*24 });
+    // var payload = {_id: user._id};
+    var token   = jwt.sign(user, secret, { expiresIn: 60*60*24 });
 
     return res.status(200).json({
       success: true,

@@ -43,7 +43,9 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
     })
     .state('materials', {
       url: "/materials",
-      templateUrl: "/src/js/views/materials/index.html"
+      templateUrl: "/src/js/views/materials/index.html",
+      // controller:   "MaterialsController",
+      // controllerAs: "material"
     })
     .state('material', {
       url: "/materials/:id",

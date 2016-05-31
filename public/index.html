@@ -26,6 +26,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li ng-show="users.checkLoggedIn()">
+              <a href="#" ui-sref="materials">Materials</a>
+            </li>
+            <li ng-show="users.checkLoggedIn()">
               <a href="#" ui-sref="users">Users</a>
             </li>
             <li ng-hide="users.checkLoggedIn()">
@@ -37,6 +40,10 @@
             <li ng-show="users.checkLoggedIn()">
               <a href="#"ui-sref="home" ng-click="users.logout()">Logout</a>
             </li>
+            <li ng-show="users.checkLoggedIn()">
+              <a href="#"ui-sref="user"> Hey, {{ users.currentUser._doc.username }}</a>
+            </li>
+
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

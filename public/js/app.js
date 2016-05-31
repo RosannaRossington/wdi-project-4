@@ -48721,7 +48721,9 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
     })
     .state('materials', {
       url: "/materials",
-      templateUrl: "/src/js/views/materials/index.html"
+      templateUrl: "/src/js/views/materials/index.html",
+      // controller:   "MaterialsController",
+      // controllerAs: "material"
     })
     .state('material', {
       url: "/materials/:id",
@@ -48740,8 +48742,8 @@ angular
   .module('SustainableApp')
   .controller('MaterialsController', MaterialsController);
 
-MaterialsController.$inject = ['Material'];
-function MaterialsController(Material){
+MaterialsController.$inject = ['Material', '$state'];
+function MaterialsController(Material, $state){
 
   var self = this;
 
@@ -48759,7 +48761,7 @@ function MaterialsController(Material){
     });
   }
 
-
+  getMaterials();
 
   return self;
 }
@@ -48768,10 +48770,10 @@ angular
   .module('SustainableApp')
   .controller('UsersController', UsersController);
 
-UsersController.$inject = ['User', 'CurrentUser','$state'];
-function UsersController(User, CurrentUser, $state){
+UsersController.$inject = ['User', 'CurrentUser','$state', '$stateParams'];
+function UsersController(User, CurrentUser, $state, $stateParams){
 
-  var self = this;
+  var self           = this;
 
   self.all           = [];
   self.user          = null;
@@ -48797,12 +48799,10 @@ function UsersController(User, CurrentUser, $state){
 
       var token = res.token ? res.token : null;
       if (token) {
-        if (token) {
-      self.getUsers();
-      $state.go('home');
-        }
+        self.currentUser = CurrentUser.getUser();
+        self.getUsers();
+        $state.go('home');
       }
-    self.currentUser = CurrentUser.getUser();
   }
 
   function handleError(e) {

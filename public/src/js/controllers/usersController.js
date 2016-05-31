@@ -2,10 +2,10 @@ angular
   .module('SustainableApp')
   .controller('UsersController', UsersController);
 
-UsersController.$inject = ['User', 'CurrentUser','$state'];
-function UsersController(User, CurrentUser, $state){
+UsersController.$inject = ['User', 'CurrentUser','$state', '$stateParams'];
+function UsersController(User, CurrentUser, $state, $stateParams){
 
-  var self = this;
+  var self           = this;
 
   self.all           = [];
   self.user          = null;
@@ -31,12 +31,10 @@ function UsersController(User, CurrentUser, $state){
 
       var token = res.token ? res.token : null;
       if (token) {
-        if (token) {
-      self.getUsers();
-      $state.go('home');
-        }
+        self.currentUser = CurrentUser.getUser();
+        self.getUsers();
+        $state.go('home');
       }
-    self.currentUser = CurrentUser.getUser();
   }
 
   function handleError(e) {
