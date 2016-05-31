@@ -40,6 +40,19 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
           $scope.$parent.users.user = res.user;
         });
       }
+    })
+    .state('materials', {
+      url: "/materials",
+      templateUrl: "/src/js/views/materials/index.html"
+    })
+    .state('material', {
+      url: "/materials/:id",
+      templateUrl: "/src/js/views/materials/show.html",
+      controller: function($scope, $stateParams, Material) {
+        Material.get({ id: $stateParams.id }, function(res){
+          $scope.$parent.materials.material = res.material;
+        });
+      }
     });
 
   $urlRouterProvider.otherwise("/");

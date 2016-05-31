@@ -48718,9 +48718,50 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
           $scope.$parent.users.user = res.user;
         });
       }
+    })
+    .state('materials', {
+      url: "/materials",
+      templateUrl: "/src/js/views/materials/index.html"
+    })
+    .state('material', {
+      url: "/materials/:id",
+      templateUrl: "/src/js/views/materials/show.html",
+      controller: function($scope, $stateParams, Material) {
+        Material.get({ id: $stateParams.id }, function(res){
+          $scope.$parent.materials.material = res.material;
+        });
+      }
     });
 
   $urlRouterProvider.otherwise("/");
+}
+
+angular
+  .module('SustainableApp')
+  .controller('MaterialsController', MaterialsController);
+
+MaterialsController.$inject = ['Material'];
+function MaterialsController(Material){
+
+  var self = this;
+
+  self.all           = [];
+  self.material      = null;
+  self.getMaterials  = getMaterials;
+
+
+  function getMaterials() {
+    Material.query(function(data){
+      console.log(data);
+      self.all = data.materials;
+
+      console.log("Materials " + data);
+    });
+  }
+
+
+
+  return self;
 }
 
 angular
@@ -48744,8 +48785,10 @@ function UsersController(User, CurrentUser, $state){
 
   function getUsers() {
     User.query(function(data){
+      console.log(data);
       self.all = data.users;
-      console.log("UCtrl" + self.all);
+
+      console.log("UCtrl " + self.all);
     });
   }
 
@@ -48794,6 +48837,24 @@ function UsersController(User, CurrentUser, $state){
 
 angular
   .module('SustainableApp')
+  .factory('Material', Material);
+
+Material.$inject = ['$resource', 'API'];
+function Material($resource, API){
+
+  return $resource(
+    API+'/materials/:id', {id: '@id'},
+    { 'get':       { method: 'GET' },
+      'save':      { method: 'POST' },
+      'query':     { method: 'GET', isArray: false},
+      'remove':    { method: 'DELETE' },
+      'delete':    { method: 'DELETE' },
+    }
+  );
+}
+
+angular
+  .module('SustainableApp')
   .factory('User', User);
 
 User.$inject = ['$resource', 'API'];
@@ -48803,7 +48864,7 @@ function User($resource, API){
     API+'/users/:id', {id: '@id'},
     { 'get':       { method: 'GET' },
       'save':      { method: 'POST' },
-      'query':     { method: 'GET', isArray: true},
+      'query':     { method: 'GET', isArray: false},
       'remove':    { method: 'DELETE' },
       'delete':    { method: 'DELETE' },
       'register':  {
@@ -48837,7 +48898,7 @@ function AuthInterceptor(API, TokenService) {
         },
 
         response: function(res) {
-            console.log("Auth" + res);
+            console.log("Aauth: " + res);
             if (res.config.url.indexOf(API) === 0 && res.data.token) {
                 TokenService.setToken(res.data.token);
             }
@@ -48853,6 +48914,7 @@ angular
 CurrentUser.$inject = ["TokenService"];
 function CurrentUser(TokenService){
     var self = this;
+    console.log("this is " + this);
     self.getUser = getUser;
     self.clearUser = clearUser;
     self.user = getUser();

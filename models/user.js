@@ -24,7 +24,7 @@ userSchema.methods.validatePassword = function(password){
 // Setup a virtual field of password so that we can use that instead of passwordHash
 userSchema.virtual("password")
 .set(function(password){
-  // Save a temp variable to the user object so that we can still use the value
+
   this._password    = password;
   // Save the hashed password to the field passwordHash
   this.passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
@@ -57,7 +57,6 @@ userSchema.virtual('passwordConfirmation')
       this.invalidate("email", "You must enter a valid email address");
     }
   });
-//ensure the users password is still hidden when requesting information from API 
   userSchema.set('toJSON', {
   transform: function(doc, ret, options){
       delete ret.passwordHash;

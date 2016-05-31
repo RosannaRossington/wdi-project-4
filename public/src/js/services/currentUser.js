@@ -5,6 +5,7 @@ angular
 CurrentUser.$inject = ["TokenService"];
 function CurrentUser(TokenService){
     var self = this;
+    console.log("this is " + this);
     self.getUser = getUser;
     self.clearUser = clearUser;
     self.user = getUser();

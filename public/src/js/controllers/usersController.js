@@ -19,8 +19,10 @@ function UsersController(User, CurrentUser, $state){
 
   function getUsers() {
     User.query(function(data){
+      console.log(data);
       self.all = data.users;
-      console.log("UCtrl" + self.all);
+
+      console.log("UCtrl " + self.all);
     });
   }
 
