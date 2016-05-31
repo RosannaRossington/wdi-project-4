@@ -8,7 +8,7 @@ function materialsIndex(req, res) {
 }
 
 function materialsShow(req, res){
-  Material.findById(req.params.id, function(err, user){
+  Material.findById(req.params.id, function(err, material){
     if (err) return res.status(404).json({ message: 'Something went wrong.' });
     res.status(200).json({material:material});
   });

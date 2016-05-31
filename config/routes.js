@@ -4,6 +4,7 @@ var router   = express.Router();
 var usersController           = require('../controllers/users');
 var authenticationsController = require('../controllers/authentications');
 var materialsController       = require('../controllers/materials');
+var scrape = require('../controllers/scrape');
 
 
 router.post('/login', authenticationsController.login);
@@ -20,5 +21,11 @@ router.route('/users/:id')
 
 router.route('/materials')
   .get(materialsController.index);
+
+router.route('/materials/:id')
+  .get(materialsController.show);
+
+router.route('/scrape/netaporter')
+  .post(scrape.netaporter);
 
 module.exports = router;

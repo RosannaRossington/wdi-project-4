@@ -1,0 +1,16 @@
+<h1>Material</h1>
+<section ng-controller="MaterialsController as materials">
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="caption">
+        <h3 class="media-heading"> Material - {{ materials.material.material_name }}</h3>
+        <h3 class="media-heading"> Geographic Location - {{ materials.material.geographic_location }}</h3>
+        <h3 class="media-heading"> Chemistry Score - {{ materials.material.chemistry_total }}</h3>
+        <h3 class="media-heading"> Energy GHG Emissions Score - {{ materials.material.energy_ghg_emissions_intensity_total }}</h3>
+        <h3 class="media-heading"> Water Land Intensity Score - {{ materials.material.water_land_intensity_total }}</h3>
+        <h3 class="media-heading"> Physical Waste Score - {{ materials.material.physical_waste_total }}</h3>
+        <h3 class="media-heading"><h4> Total Score - {{ materials.material.total_score }}</h4></h3>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,8 +1,13 @@
 <h1>home</h1>
 
-<!-- user enters url here and scraper runs -->
-<input type="text" ng-model="searchBox" placeholder="Enter your product URL">
+<!-- user enters url here and getMaterials(url) is run  -->
 
-<hr>
+<form id="search" name="searchForm" ng-submit="users.getMaterials()" novalidate>
 
-<!-- " {}| filter:searchBox" -->
+  <div class="form-group">
+    <label for="productURL">Product Url</label>
+    <input type="text" class="form-control" id="productURL" placeholder="Enter your product URL" ng-model="users.productUrl">
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

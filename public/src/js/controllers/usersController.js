@@ -2,8 +2,8 @@ angular
   .module('SustainableApp')
   .controller('UsersController', UsersController);
 
-UsersController.$inject = ['User', 'CurrentUser','$state', '$stateParams'];
-function UsersController(User, CurrentUser, $state, $stateParams){
+UsersController.$inject = ['User', 'CurrentUser','$state', '$stateParams', 'API', '$http'];
+function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
 
   var self           = this;
 
@@ -16,6 +16,8 @@ function UsersController(User, CurrentUser, $state, $stateParams){
   self.login         = login;
   self.logout        = logout;
   self.checkLoggedIn = checkLoggedIn;
+  self.getMaterials  = getMaterials;
+  self.productUrl    = "";
 
   function getUsers() {
     User.query(function(data){
@@ -58,6 +60,14 @@ function UsersController(User, CurrentUser, $state, $stateParams){
   function checkLoggedIn() {
     self.currentUser = CurrentUser.getUser();
     return !!self.currentUser;
+  }
+
+  function getMaterials() {
+    if (!self.productUrl) return console.log("no url!");
+    $http.post(API + "/scrape/netaporter", {url: self.productUrl})
+      .then(function(response) {
+        console.log(response.data.text);
+      });
   }
 
   if (checkLoggedIn()) {

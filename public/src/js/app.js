@@ -53,6 +53,7 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
       controller: function($scope, $stateParams, Material) {
         Material.get({ id: $stateParams.id }, function(res){
           $scope.$parent.materials.material = res.material;
+          // console.log(res);
         });
       }
     });
