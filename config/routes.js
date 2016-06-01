@@ -25,7 +25,12 @@ router.route('/materials')
 router.route('/materials/:id')
   .get(materialsController.show);
 
+router.route('/materials/search')
+  .post(materialsController.search);
+
 router.route('/scrape/netaporter')
   .post(scrape.netaporter);
+
+
 
 module.exports = router;

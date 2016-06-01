@@ -48776,8 +48776,8 @@ angular
   .module('SustainableApp')
   .controller('UsersController', UsersController);
 
-UsersController.$inject = ['User', 'CurrentUser','$state', '$stateParams', 'API', '$http'];
-function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
+UsersController.$inject = ['User', 'Material', 'CurrentUser','$state', '$stateParams', 'API', '$http'];
+function UsersController(User, Material, CurrentUser, $state, $stateParams, API, $http){
 
   var self                    = this;
 
@@ -48792,7 +48792,8 @@ function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
   self.checkLoggedIn          = checkLoggedIn;
   self.getProductMaterials    = getProductMaterials;
   self.productUrl             = "";
-  self.productMaterial        = "";
+  self.productMaterials       = [];
+  self.cleanProducts          = cleanProducts;
   self.checkProductMaterials  = checkProductMaterials;
 
   function getUsers() {
@@ -48856,22 +48857,25 @@ function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
 
 //return show page
 
-  function checkProductMaterials(productMaterial){
-   self.productMaterial   = productMaterial;
-   var regex              = /[.']*Leather|Modal|Nylon|Linen|Polyester fabric|Polyethylene foam|Polylactic acid fabric|Polypropylene|Polypropylene fabric|Polyurethane TPU, with solvent|Polyvinyl Alcohol|Pulp, wood|Ramie fabric|Rayon-viscose fabric, bamboo|Rayon-viscose fabric, wood|Rubber, natural latex|Rubber, polybutadiene|Silk|Spandex|Steel, carbon|Steel, stainless|Triexta fabric|Wool fabric|Cotton|Polyester fabric, recycled|Cotton fabric, woven|Polyester fabric, recycled|Polycarbonate|Wood|Down|Rubber|Zinc|Acrylic|Hemp|Jute|Lyocell|Cotton, organic/ig;
+ function checkProductMaterials(productMaterial){
+   var materials = self.cleanProducts(productMaterial);
+   Material.search(materials, function(response) {
+     console.log(response.materials);
+   });
+ }
 
-   var materialFound = productMaterial.match(regex);
+ function cleanProducts(productMaterial) {
+   var productString = productMaterial.replace(/\W|\d|lining/ig, " ");
+   var productArray = productString.replace(/\s+/ig, ',').split(',');
+   var convertedArray = productArray.map(function(material) {
+     return (material === 'suede') ? 'leather': material;
+   });
+   return convertedArray.filter(function(item, pos) {
+     return (convertedArray.indexOf(item) == pos) && item;
+   });
+ }
 
-    if ( productMaterial.match(regex) == -1 ){
-          console.log("Sorry there is no information for this product." );
-       }
-    else
-       {
-         //return page with all materials in product
-          console.log("Contains material " + materialFound );
-       }
-    console.log("Contains material " + materialFound );
-  }
+
 
   return self;
 }
@@ -48890,6 +48894,10 @@ function Material($resource, API){
       'query':     { method: 'GET', isArray: false},
       'remove':    { method: 'DELETE' },
       'delete':    { method: 'DELETE' },
+      'search':    {
+                     method: 'POST',
+                     url: API + "/materials/search"
+                   }
     }
   );
 }

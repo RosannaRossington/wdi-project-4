@@ -7949,6 +7949,10 @@ body {
   color: white;
 }
 
+body .navbar {
+  border-bottom-color: #002E01;
+}
+
 body p {
   text-align: center;
 }
@@ -7957,9 +7961,40 @@ body h4 {
   text-align: center;
 }
 
-body #showGrid {
+body #showGridFootprint:hover {
   color: white;
-  text-align: center;
+  border: solid black 2px;
+  padding: 0;
+  min-height: 300px;
+  background-image: url("/images/cactus.jpg");
+}
+
+body #showGridFootprint:hover {
+  color: white;
+  border: solid black 2px;
+  padding: 0;
+  min-height: 300px;
+  background-image: url("/images/flowers.jpg");
+}
+
+body #showGridLocation:hover {
+  color: white;
+  border: solid black 2px;
+  padding: 0;
+  min-height: 300px;
+  background-image: url("/images/plants.jpg");
+}
+
+body #showGridWater:hover {
+  color: white;
+  border: solid black 2px;
+  padding: 0;
+  min-height: 300px;
+  background-image: url("/images/water.jpg");
+}
+
+body .showGrid {
+  color: white;
   border: solid black 2px;
   padding: 0;
   min-height: 300px;
@@ -7972,7 +8007,7 @@ body #showGridFirstName {
   border: solid black 2px;
   padding: 0;
   min-height: 300px;
-  background: url(http://themodelsoffice.com/wp-content/uploads/2015/04/House-of-Hackney-Palmeral.jpg);
+  background-image: url("/images/plants.jpg");
 }
 
 body #showGridFirstName h3 {
@@ -7987,12 +8022,4 @@ body #showGridFirstName h3 span {
   font: bold 24px/45px Helvetica, Sans-Serif;
   letter-spacing: -1px;
   padding: 10px;
-}
-
-body #showGridFirstName:hover {
-  color: white;
-  border: solid black 2px;
-  padding: 0;
-  min-height: 300px;
-  background: #CCB499;
 }

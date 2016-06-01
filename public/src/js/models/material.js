@@ -12,6 +12,10 @@ function Material($resource, API){
       'query':     { method: 'GET', isArray: false},
       'remove':    { method: 'DELETE' },
       'delete':    { method: 'DELETE' },
+      'search':    {
+                     method: 'POST',
+                     url: API + "/materials/search"
+                   }
     }
   );
 }

@@ -10,4 +10,6 @@ var mongoose = require("mongoose");
             physical_waste_total: Number
     });
 
+    materialSchema.index({ material_name: "text" });
+
 module.exports = mongoose.model("Material", materialSchema);
