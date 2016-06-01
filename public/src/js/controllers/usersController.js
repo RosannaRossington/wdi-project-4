@@ -21,6 +21,7 @@ function UsersController(User, Material, CurrentUser, $state, $stateParams, API,
   self.productMaterials       = [];
   self.cleanProducts          = cleanProducts;
   self.checkProductMaterials  = checkProductMaterials;
+  self.searchedMaterials      = "";
 
   function getUsers() {
     User.query(function(data){
@@ -69,39 +70,30 @@ function UsersController(User, Material, CurrentUser, $state, $stateParams, API,
     $http.post(API + "/scrape/netaporter", {url: self.productUrl})
       .then(function(response) {
         self.productMaterial = response.data.text;
-        console.log("****");
-        console.log(self.productMaterial);
-        $state.go('productMaterial');
         checkProductMaterials(self.productMaterial);
       });
   }
 
-//take self.productMaterial and check against materials in db
-//search through list of Materials
-
-//return the first material | return page with all the materials that then link to the material show page
-
-//return show page
-
+//search the database and return the materials that exist
  function checkProductMaterials(productMaterial){
    var materials = self.cleanProducts(productMaterial);
    Material.search(materials, function(response) {
-     console.log(response.materials);
+     self.searchedMaterials = response.materials;
+     console.log(self.searchedMaterials);
+    $state.go('productMaterial');
    });
  }
-
+//convert product page materials to words and remove duplicates
  function cleanProducts(productMaterial) {
-   var productString = productMaterial.replace(/\W|\d|lining/ig, " ");
-   var productArray = productString.replace(/\s+/ig, ',').split(',');
+   var productString  = productMaterial.replace(/\W|\d|lining/ig, " ");
+   var productArray   = productString.replace(/\s+/ig, ',').split(',');
    var convertedArray = productArray.map(function(material) {
      return (material === 'suede') ? 'leather': material;
    });
-   return convertedArray.filter(function(item, pos) {
+     return convertedArray.filter(function(item, pos) {
      return (convertedArray.indexOf(item) == pos) && item;
    });
  }
-
-
 
   return self;
 }
