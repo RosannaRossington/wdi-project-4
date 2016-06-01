@@ -48788,8 +48788,6 @@ function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
   self.productUrl             = "";
   self.productMaterial        = "";
   self.checkProductMaterials  = checkProductMaterials;
-  //self.materialPattern        = "";
-
 
   function getUsers() {
     User.query(function(data){
@@ -48851,22 +48849,26 @@ function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
 
 //take self.productMaterial and check against materials in db
 //search through list of Materials
-//return show page of material found
+
+//return the first material | return page with all the materials that then link to the material show page
+
+//return show page
 
   function checkProductMaterials(productMaterial){
    self.productMaterial   = productMaterial;
+   var regex              = /[.']*Leather|Modal|Nylon|Linen|Polyester fabric|Polyethylene foam|Polylactic acid fabric|Polypropylene|Polypropylene fabric|Polyurethane TPU, with solvent|Polyvinyl Alcohol|Pulp, wood|Ramie fabric|Rayon-viscose fabric, bamboo|Rayon-viscose fabric, wood|Rubber, natural latex|Rubber, polybutadiene|Silk|Spandex|Steel, carbon|Steel, stainless|Triexta fabric|Wool fabric|Cotton|Polyester fabric, recycled|Cotton fabric, woven|Polyester fabric, recycled|Polycarbonate|Wood|Down|Rubber|Zinc|Acrylic|Hemp|Jute|Lyocell|Cotton, organic/ig;
 
+   var materialFound = productMaterial.match(regex);
 
-          //  if ( self.productMaterial.match(materialPattern) == -1 ){
-          //        return("Does not contain material" );
-          //     }
-           //
-          //     else
-          //     {
-          //        return("Contains material" );
-          //     }
- var materialFound = productMaterial.match(/Leather|Modal|Nylon|Linen|Polyester fabric|Polyethylene foam|Polylactic acid fabric|Polypropylene|Polypropylene fabric|Polyurethane TPU, with solvent|Polyvinyl Alcohol|Pulp, wood|Ramie fabric|Rayon-viscose fabric, bamboo|Rayon-viscose fabric, wood|Rubber, natural latex|Rubber, polybutadiene|Silk|Spandex|Steel, carbon|Steel, stainless|Triexta fabric|Wool fabric|Cotton|Polyester fabric, recycled|Cotton fabric, woven|Polyester fabric, recycled|Polycarbonate|Wood|Down|Rubber|Zinc|Acrylic|Hemp|Jute|Lyocell|Cotton, organic/ig);
-  console.log("Match found " + materialFound);
+    if ( productMaterial.match(regex) == -1 ){
+          console.log("Sorry there is no information for this product." );
+       }
+    else
+       {
+         //return page with all materials in product
+          console.log("Contains material " + materialFound );
+       }
+    console.log("Contains material " + materialFound );
   }
 
   return self;
