@@ -56,6 +56,12 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
           console.log(res);
         });
       }
+    })
+    .state('product', {
+      url: "/products",
+      templateUrl: "/src/js/views/products/show.html",
+      // controller:   "UsersController",
+      // controllerAs: "users"
     });
 
   $urlRouterProvider.otherwise("/");

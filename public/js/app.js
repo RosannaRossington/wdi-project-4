@@ -48734,6 +48734,12 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
           console.log(res);
         });
       }
+    })
+    .state('product', {
+      url: "/products",
+      templateUrl: "/src/js/views/products/show.html",
+      // controller:   "UsersController",
+      // controllerAs: "users"
     });
 
   $urlRouterProvider.otherwise("/");
@@ -48791,16 +48797,11 @@ function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
 
   function getUsers() {
     User.query(function(data){
-      console.log(data);
       self.all = data.users;
-
-      console.log("UCtrl " + self.all);
     });
   }
 
   function handleLogin(res) {
-    console.log("handleLogin" + res);
-
       var token = res.token ? res.token : null;
       if (token) {
         self.currentUser = CurrentUser.getUser();
@@ -48843,6 +48844,7 @@ function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
         self.productMaterial = response.data.text;
         console.log("****");
         console.log(self.productMaterial);
+        $state.go('product');
         checkProductMaterials(self.productMaterial);
       });
   }

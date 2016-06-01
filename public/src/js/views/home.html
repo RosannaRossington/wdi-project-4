@@ -6,7 +6,7 @@
 
   <div class="form-group">
     <label for="productURL">Product Url</label>
-    <input type="text" class="form-control" id="productURL" placeholder="Enter your product URL" ng-model="users.productUrl" ng-pattern="materialPattern">
+    <input type="text" class="form-control" id="productURL" placeholder="Enter your product URL" ng-model="users.productUrl">
   </div>
 
   <button type="submit" class="btn btn-default">Submit</button>
@@ -14,7 +14,7 @@
 
 <h1>{{users.productMaterial}}</h1>
 
-<!-- ********Material search********* -->
+<!-- ********Material search bar********* -->
 <input type="text" ng-model="searchBox">
   <section ng-controller="MaterialsController as materials">
     <ul class="media" ng-repeat="material in materials.all | filter:searchBox">
