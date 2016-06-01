@@ -5,19 +5,23 @@ angular
 UsersController.$inject = ['User', 'CurrentUser','$state', '$stateParams', 'API', '$http'];
 function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
 
-  var self           = this;
+  var self                    = this;
 
-  self.all           = [];
-  self.user          = null;
-  self.currentUser   = null;
-  self.error         = null;
-  self.getUsers      = getUsers;
-  self.register      = register;
-  self.login         = login;
-  self.logout        = logout;
-  self.checkLoggedIn = checkLoggedIn;
-  self.getMaterials  = getMaterials;
-  self.productUrl    = "";
+  self.all                    = [];
+  self.user                   = null;
+  self.currentUser            = null;
+  self.error                  = null;
+  self.getUsers               = getUsers;
+  self.register               = register;
+  self.login                  = login;
+  self.logout                 = logout;
+  self.checkLoggedIn          = checkLoggedIn;
+  self.getProductMaterials    = getProductMaterials;
+  self.productUrl             = "";
+  self.productMaterial        = "";
+  self.checkProductMaterials  = checkProductMaterials;
+  //self.materialPattern        = "";
+
 
   function getUsers() {
     User.query(function(data){
@@ -62,16 +66,39 @@ function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
     return !!self.currentUser;
   }
 
-  function getMaterials() {
+  if (checkLoggedIn()) {
+    self.getUsers();
+  }
+
+  function getProductMaterials() {
     if (!self.productUrl) return console.log("no url!");
     $http.post(API + "/scrape/netaporter", {url: self.productUrl})
       .then(function(response) {
-        console.log(response.data.text);
+        self.productMaterial = response.data.text;
+        console.log("****");
+        console.log(self.productMaterial);
+        checkProductMaterials(self.productMaterial);
       });
   }
 
-  if (checkLoggedIn()) {
-    self.getUsers();
+//take self.productMaterial and check against materials in db
+//search through list of Materials
+//return show page of material found
+
+  function checkProductMaterials(productMaterial){
+   self.productMaterial   = productMaterial;
+
+
+          //  if ( self.productMaterial.match(materialPattern) == -1 ){
+          //        return("Does not contain material" );
+          //     }
+           //
+          //     else
+          //     {
+          //        return("Contains material" );
+          //     }
+ var materialFound = productMaterial.match(/Leather|Modal|Nylon|Linen|Polyester fabric|Polyethylene foam|Polylactic acid fabric|Polypropylene|Polypropylene fabric|Polyurethane TPU, with solvent|Polyvinyl Alcohol|Pulp, wood|Ramie fabric|Rayon-viscose fabric, bamboo|Rayon-viscose fabric, wood|Rubber, natural latex|Rubber, polybutadiene|Silk|Spandex|Steel, carbon|Steel, stainless|Triexta fabric|Wool fabric|Cotton|Polyester fabric, recycled|Cotton fabric, woven|Polyester fabric, recycled|Polycarbonate|Wood|Down|Rubber|Zinc|Acrylic|Hemp|Jute|Lyocell|Cotton, organic/ig);
+  console.log("Match found " + materialFound);
   }
 
   return self;

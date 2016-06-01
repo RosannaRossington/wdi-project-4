@@ -2,13 +2,12 @@ angular
   .module('SustainableApp')
   .controller('MaterialsController', MaterialsController);
 
-MaterialsController.$inject = ['Material', '$state'];
-function MaterialsController(Material, $state){
+MaterialsController.$inject = ['Material', '$state', '$stateParams'];
+function MaterialsController(Material, $state, $stateParams){
 
-  var self = this;
+  var self           = this;
 
   self.all           = [];
-  self.material      = null;
   self.getMaterials  = getMaterials;
 
 
@@ -17,7 +16,7 @@ function MaterialsController(Material, $state){
       console.log(data);
       self.all = data.materials;
 
-      console.log("Materials " + data);
+      console.log("Materials " + self.all);
     });
   }
 

@@ -4,7 +4,7 @@ var router   = express.Router();
 var usersController           = require('../controllers/users');
 var authenticationsController = require('../controllers/authentications');
 var materialsController       = require('../controllers/materials');
-var scrape = require('../controllers/scrape');
+var scrape                    = require('../controllers/scrape');
 
 
 router.post('/login', authenticationsController.login);

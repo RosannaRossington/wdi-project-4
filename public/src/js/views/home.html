@@ -1,13 +1,27 @@
 <h1>home</h1>
 
-<!-- user enters url here and getMaterials(url) is run  -->
+<!-- ********ProudctURl search********* -->
 
-<form id="search" name="searchForm" ng-submit="users.getMaterials()" novalidate>
+<form id="search" name="searchForm" ng-submit="users.getProductMaterials()" novalidate>
 
   <div class="form-group">
     <label for="productURL">Product Url</label>
-    <input type="text" class="form-control" id="productURL" placeholder="Enter your product URL" ng-model="users.productUrl">
+    <input type="text" class="form-control" id="productURL" placeholder="Enter your product URL" ng-model="users.productUrl" ng-pattern="materialPattern">
   </div>
 
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
+
+<h1>{{users.productMaterial}}</h1>
+
+<!-- ********Material search********* -->
+<input type="text" ng-model="searchBox">
+  <section ng-controller="MaterialsController as materials">
+    <ul class="media" ng-repeat="material in materials.all | filter:searchBox">
+      <div class="media-body">
+      <a ui-sref="material({ id: material._id })">
+        <li class="media-heading">{{ material.material_name }}</li>
+      </a>
+      </div>
+    </ul>
+  </section>

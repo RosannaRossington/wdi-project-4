@@ -7,7 +7,6 @@ module.exports = {
 };
 
 function netaporter(req, res) {
-  console.log(req.body.url);
   return rp(req.body.url)
     .then(function(body) {
       var $ = cheerio.load(body);
