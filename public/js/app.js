@@ -48728,15 +48728,12 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
     .state('material', {
       url: "/materials/:id",
       templateUrl: "/src/js/views/materials/show.html",
-      controller: function($scope, $stateParams, Material) {
-        Material.get({ id: $stateParams.id }, function(res){
-          // $scope.$parent.materials.material = res.material;
-          console.log(res);
-        });
-      }
+      // controller:   "MaterialsController",
+      // controllerAs: "material"
+
     })
-    .state('product', {
-      url: "/products",
+    .state('productMaterial', {
+      url: "/productmaterial",
       templateUrl: "/src/js/views/products/show.html",
       // controller:   "UsersController",
       // controllerAs: "users"
@@ -48753,21 +48750,24 @@ MaterialsController.$inject = ['Material', '$state', '$stateParams'];
 function MaterialsController(Material, $state, $stateParams){
 
   var self           = this;
-
   self.all           = [];
   self.getMaterials  = getMaterials;
-
+  self.getMaterial   = getMaterial;
 
   function getMaterials() {
     Material.query(function(data){
-      console.log(data);
       self.all = data.materials;
-
-      console.log("Materials " + self.all);
     });
   }
 
+function getMaterial() {
+  Material.get({ id: $stateParams.id },function(res){
+      self.material = res;
+        console.log("this is material", res);
+  });
+}
   getMaterials();
+  getMaterial();
 
   return self;
 }
@@ -48844,7 +48844,7 @@ function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
         self.productMaterial = response.data.text;
         console.log("****");
         console.log(self.productMaterial);
-        $state.go('product');
+        $state.go('productMaterial');
         checkProductMaterials(self.productMaterial);
       });
   }
@@ -48939,7 +48939,6 @@ function AuthInterceptor(API, TokenService) {
         },
 
         response: function(res) {
-            console.log("Aauth: " + res);
             if (res.config.url.indexOf(API) === 0 && res.data.token) {
                 TokenService.setToken(res.data.token);
             }

@@ -1,16 +1,15 @@
-<h1>Material</h1>
+<h1>{{ materials.material.material.material_name }}</h1>
 <section ng-controller="MaterialsController as materials">
-  {{materials.all}}
   <div class="row">
     <div class="col-sm-6 col-md-4">
       <div class="caption">
-        <h3 class="media-heading"> Material - {{ materials.all.material_name }}</h3>
-        <h3 class="media-heading"> Geographic Location - {{ materials.all.material.geographic_location }}</h3>
-        <h3 class="media-heading"> Chemistry Score - {{ materials.material.chemistry_total }}</h3>
-        <h3 class="media-heading"> Energy GHG Emissions Score - {{ materials.material.energy_ghg_emissions_intensity_total }}</h3>
-        <h3 class="media-heading"> Water Land Intensity Score - {{ materials.material.water_land_intensity_total }}</h3>
-        <h3 class="media-heading"> Physical Waste Score - {{ materials.material.physical_waste_total }}</h3>
-        <h3 class="media-heading"><h4> Total Score - {{ materials.material.total_score }}</h4></h3>
+        <!-- <p class="media-heading"> Name: {{ materials.material.material.material_name }}</p> -->
+        <p class="media-heading"> Location: {{ materials.material.material.geographic_location }}</p>
+        <p class="media-heading"> Chemistry Score: {{ materials.material.material.chemistry_total }}</p>
+        <p class="media-heading"> GHG Score: {{ materials.material.material.energy_ghg_emissions_intensity_total }}</p>
+        <p class="media-heading"> Water Score: {{ materials.material.material.water_land_intensity_total }}</p>
+        <p class="media-heading"> Waste Score: {{ materials.material.material.physical_waste_total }}</p>
+        <p class="media-heading">Total Score:<h4> {{ materials.material.material.total_score }}</h4></p>
       </div>
     </div>
   </div>

@@ -7949,6 +7949,14 @@ body {
   color: white;
 }
 
+body p {
+  text-align: center;
+}
+
+body h4 {
+  text-align: center;
+}
+
 body #showGrid {
   color: white;
   text-align: center;

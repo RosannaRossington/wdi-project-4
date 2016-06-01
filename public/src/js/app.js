@@ -50,15 +50,12 @@ function Router($stateProvider,$locationProvider, $urlRouterProvider) {
     .state('material', {
       url: "/materials/:id",
       templateUrl: "/src/js/views/materials/show.html",
-      controller: function($scope, $stateParams, Material) {
-        Material.get({ id: $stateParams.id }, function(res){
-          // $scope.$parent.materials.material = res.material;
-          console.log(res);
-        });
-      }
+      // controller:   "MaterialsController",
+      // controllerAs: "material"
+
     })
-    .state('product', {
-      url: "/products",
+    .state('productMaterial', {
+      url: "/productmaterial",
       templateUrl: "/src/js/views/products/show.html",
       // controller:   "UsersController",
       // controllerAs: "users"

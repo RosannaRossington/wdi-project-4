@@ -17,7 +17,6 @@ function AuthInterceptor(API, TokenService) {
         },
 
         response: function(res) {
-            console.log("Aauth: " + res);
             if (res.config.url.indexOf(API) === 0 && res.data.token) {
                 TokenService.setToken(res.data.token);
             }

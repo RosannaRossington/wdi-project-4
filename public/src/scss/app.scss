@@ -3,6 +3,12 @@
 body {
   background: $body-background-color;
   color: $font-color;
+  p {
+    text-align: center;
+  }
+  h4 {
+    text-align: center;
+  }
     #showGrid {
       color: $font-color;
       text-align: center;

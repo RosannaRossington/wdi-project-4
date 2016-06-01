@@ -70,7 +70,7 @@ function UsersController(User, CurrentUser, $state, $stateParams, API, $http){
         self.productMaterial = response.data.text;
         console.log("****");
         console.log(self.productMaterial);
-        $state.go('product');
+        $state.go('productMaterial');
         checkProductMaterials(self.productMaterial);
       });
   }
