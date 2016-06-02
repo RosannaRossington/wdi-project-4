@@ -129,32 +129,10 @@ h5 {
        h2.media-heading {
          color: #666;
        }
-    }
 
-    //Home page
-    .showGridHome {
-      color: $dark-green;
-      text-align: center;
-      border: $show-border;
-      padding: 0;
-      min-height: 300px;
-      background-color: $white;
-      h3 {
-        color: $dark-green;
-        position: absolute;
-        top: 30%;
-        left: 0;
-        width: 100%;
-      }
-      a {
-        color: $dark-green;
-      }
-      img {
-        position: absolute;
-        top: 30%;
-        left: 0;
-        width: auto;
-      }
+       h3 {
+         text-decoration: underline;
+       }
     }
 
     #materialsIndex {
@@ -188,35 +166,30 @@ h5 {
     }
 
     #home {
-      padding-top: 50px;
+        text-align: center;
+        color: $dark-green;
+        background-color: $white;
+          border: $show-border;
+        h4 {
+          text-transform: uppercase;
+          text-decoration: underline;
+        }
 
-    }
+         h1 {
+           color: $gold;
+         }
+      width: 900px;
+      height: 500px;
 
-    #welcome {
-      background-color: $white;
-      // color: #C02339;
-      width: 100%;
-      height: 300px;
-padding-bottom: 50px;
-      h1 {
-        margin-top: 0px;
-        padding-top: 25px;
-      }
-      .col-md-8{
-        padding-top: 25px;
-      }
+      position: absolute;
+      top: 50%;
+      margin: 50px;
+      display: block;
+      left: 50%;
+      transform: translate(-50%,-50%);
 
-    }
+      padding: 10px;
 
-    #impact {
-      padding-top: 50px;
-      padding-bottom: 50px;
-    }
-
-    #url {
-      width: 100%;
-      height: 200px;
-      padding-bottom: 25px;
     }
 
   #authPage {
