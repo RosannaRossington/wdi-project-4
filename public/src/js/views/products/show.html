@@ -1,6 +1,12 @@
-
-  <li class="media-heading" ng-repeat="material in users.searchedMaterials">
-    <a ui-sref="material({ id: material._id })">
-    {{material.material_name}}
-    </a>
-  </li>
+<section id="productShowPage">
+  <h5>Materials used:</h5>
+    <div class="capsule">
+        <li class="media-heading" ng-repeat="material in users.searchedMaterials">
+            <div class="col-md-6 showGridHome">
+                <a ui-sref="material({ id: material._id })">
+                    <h3>{{material.material_name}}</h3>
+                </a>
+            </div>
+        </li>
+    </div>
+</section>

@@ -1,6 +1,31 @@
 @import "_bower";
 @import "_variables";
+
+@font-face{
+  font-family: 'Questa';
+src: url(../../assets/Questa/Webfonts/questagrande_regular_macroman/2-questa_grande_regular_31-webfont.ttf)
+url(../../assets/Questa/Webfonts/questagrande_regular_macroman/2-questa_grande_regular_31-webfont.woff);
+  font-family: 'Quicksand';
+  src: url(../../assets/Quicksand/Quicksand-Regular.otf)
+}
 body {
+
+#brand {
+  font-family: Quicksand;
+}
+
+h5 {
+  font-size: 50px;
+  font-family: Questa;
+  font: $dark-green;
+}
+  li {
+    list-style-type: none;
+    a {
+      text-decoration: none;
+    }
+  }
+
   .navbar-default {
     background-color: $white;
     font: $dark-green;
@@ -9,22 +34,20 @@ body {
     border-color: transparent;
     border-radius: 0px;
     border-bottom-color:$dark-green;
+    font-family: Quicksand;
   }
     text-align: center;
-    font-family: Arial;
+    font-family: Quicksand;
     color: black;
+
     background-image: url("/images/plants.jpg");
+    background-image: repeat-none;
 
   .form-control {
     height: 75px;
     font-size: 14px;
   }
-    li {
-      list-style-type: none;
-      a {
-        text-decoration: none;
-      }
-    }
+
 
   // Material Show Page
   #showGridLocation:hover {
@@ -40,16 +63,16 @@ body {
     border: $show-border;
     padding: 0;
     min-height: 300px;
-    background:$coral;
-    //background-image: url("/images/chemical3.jpg");
+    background:Orange;
+    //background-image: url("/images/chemicals.jpg");
   }
   #showGridFootprint:hover {
     color: $font-color;
     border: $show-border;
     padding: 0;
     min-height: 300px;
-    background:$footprint;
-    //background-image: url("/images/plants.jpg");
+    background: $avocado;
+    //background-image: url("/images/jungle.jpg");
   }
   #showGridWater:hover {
     color: $font-color;
@@ -57,38 +80,51 @@ body {
     padding: 0;
     min-height: 300px;
     background:$sea-blue;
+    //background-image: url("/images/water2.jpg");
   }
   #showGridWaste:hover {
     color: $font-color;
     border: $show-border;
     padding: 0;
     min-height: 300px;
-    background: Gray;
+    background: Yellow;
+    //background-image: url("/images/fumes.jpg");
   }
     .showGrid {
-      color: $font-color;
-      text-align: center;
+      color: $dark-green;
+      // text-align: center;
       border: $show-border;
       padding: 0;
       min-height: 300px;
       background-color:$white;
+
       h2 {
-         position: absolute;
-         top: 50%;
-         left: 0;
-         width: 100%;
-         font:bold 24px/45px Helvetica, Sans-Serif;
-         span {
-           color: white;
-           font: bold 24px/45px Helvetica, Sans-Serif;
-           letter-spacing: -1px;
-           padding: 10px;
-        }
+        //  position: absolute;
+        font: 24px/45px Helvetica, Sans-Serif;
+        position: absolute;
+        top: 50%;
+        margin: 0px;
+        color: white;
+        letter-spacing: -1px;
+        display: block;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+        //  span {
+        //    color: white;
+        //    font: bold 24px/45px Helvetica, Sans-Serif;
+        //    letter-spacing: -1px;
+        //    padding: 10px;
+        //    display: block;
+        // }
       }
+
+       h2.media-heading {
+         color: #666;
+       }
     }
-    #water:hover {
-        background: url("/images/water.jpg");
-      }
+
+    //Home page
     .showGridHome {
       color: $dark-green;
       text-align: center;
@@ -96,24 +132,42 @@ body {
       padding: 0;
       min-height: 300px;
       background-color: $white;
-      #chemistry {
-
-      }
-      #energy {
-
-      }
-
-      #waste {
-        background-image: url("/images/fumes.jpg");
-      }
-    }
-    #materialShowPage {
-      background-color: blue;
-    }
-    #materialsIndex {
-      background-color: green;
-      input {
+      h3 {
+        color: $dark-green;
+        position: absolute;
+        top: 30%;
+        left: 0;
         width: 100%;
       }
+      a {
+        color: $dark-green;
+      }
+      img {
+        position: absolute;
+        top: 30%;
+        left: 0;
+        width: auto;
+      }
+    }
+
+    #materialsIndex {
+      background-color: $white;
+
+      input {
+        width: 60%;
+      }
+    }
+    main.container-fluid {
+      padding-left: 0px;
+      padding-right: 0px;
+      #productShowPage {
+        background-color: pink;
+        height:100vh;
+        width: 100%;
+      }
+    }
+    .capsule {
+      max-width: 960px;
+      margin: 0 auto;
     }
 }
