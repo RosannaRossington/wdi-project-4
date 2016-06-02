@@ -8077,7 +8077,17 @@ body .showGrid h2.media-heading {
 }
 
 body .showGrid h3 {
-  text-decoration: underline;
+  text-transform: uppercase;
+  font: Quicksand;
+  font-size: 20px;
+  color: #002E01;
+  position: absolute;
+  top: 50%;
+  margin: 0px;
+  letter-spacing: -1px;
+  display: block;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 body #materialsIndex {
