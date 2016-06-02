@@ -2,7 +2,7 @@
   <h5>Materials</h5>
 
 <!-- ********Material search bar********* -->
-<input type="text" ng-model="searchBox">
+<input type="text" ng-model="searchBox" placeholder="Search materials">
   <section ng-controller="MaterialsController as materials">
     <ul class="media" ng-repeat="material in materials.all | filter:searchBox">
       <div class="media-body">

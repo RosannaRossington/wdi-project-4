@@ -13,15 +13,23 @@ body {
 #brand {
   font-family: Quicksand;
 }
+a {
+  color: $dark-green;
+  text-decoration: none;
+}
 
 h5 {
-  font-size: 50px;
-  font-family: Questa;
-  font: $dark-green;
+  font-size: 30px;
+  font-family: Quicksand;
+  text-transform: uppercase;
+  color: $gold;
+  margin: 0px 0px 20px 0px;
+  padding-top: 20px;
 }
   li {
     list-style-type: none;
     a {
+      color: $dark-green;
       text-decoration: none;
     }
   }
@@ -29,6 +37,7 @@ h5 {
   .navbar-default {
     background-color: $white;
     font: $dark-green;
+    margin-bottom: 0px;
   }
   .navbar {
     border-color: transparent;
@@ -41,13 +50,11 @@ h5 {
     color: black;
 
     background-image: url("/images/plants.jpg");
-    background-image: repeat-none;
 
   .form-control {
     height: 75px;
     font-size: 14px;
   }
-
 
   // Material Show Page
   #showGridLocation:hover {
@@ -55,7 +62,7 @@ h5 {
     border: $show-border;
     padding: 0;
     min-height: 300px;
-    background: $avocado;
+    background: #B0D295;
     //background-image: url("/images/jungle.jpg");
   }
   #showGridChemistry:hover {
@@ -63,7 +70,7 @@ h5 {
     border: $show-border;
     padding: 0;
     min-height: 300px;
-    background:Orange;
+    background: #C02339;
     //background-image: url("/images/chemicals.jpg");
   }
   #showGridFootprint:hover {
@@ -71,7 +78,7 @@ h5 {
     border: $show-border;
     padding: 0;
     min-height: 300px;
-    background: $avocado;
+    background: #31986D;
     //background-image: url("/images/jungle.jpg");
   }
   #showGridWater:hover {
@@ -79,7 +86,7 @@ h5 {
     border: $show-border;
     padding: 0;
     min-height: 300px;
-    background:$sea-blue;
+    background:#BEDFD8;
     //background-image: url("/images/water2.jpg");
   }
   #showGridWaste:hover {
@@ -87,20 +94,28 @@ h5 {
     border: $show-border;
     padding: 0;
     min-height: 300px;
-    background: Yellow;
+    background: #D2C1D2;
+    //background-image: url("/images/fumes.jpg");
+  }
+  #showGridTotal:hover {
+    color: $font-color;
+    border: $show-border;
+    padding: 0;
+    min-height: 300px;
+    background: #D1AB08;
     //background-image: url("/images/fumes.jpg");
   }
     .showGrid {
       color: $dark-green;
-      // text-align: center;
       border: $show-border;
-      padding: 0;
+      padding: 0px;
       min-height: 300px;
       background-color:$white;
 
       h2 {
         //  position: absolute;
-        font: 24px/45px Helvetica, Sans-Serif;
+        font: Quicksand;
+        font-size: 20px;
         position: absolute;
         top: 50%;
         margin: 0px;
@@ -109,14 +124,6 @@ h5 {
         display: block;
         left: 50%;
         transform: translate(-50%,-50%);
-
-        //  span {
-        //    color: white;
-        //    font: bold 24px/45px Helvetica, Sans-Serif;
-        //    letter-spacing: -1px;
-        //    padding: 10px;
-        //    display: block;
-        // }
       }
 
        h2.media-heading {
@@ -152,22 +159,81 @@ h5 {
 
     #materialsIndex {
       background-color: $white;
-
       input {
+        text-align: center;
         width: 60%;
+        height: 75px;
+        font-size: 14px;
+        margin-bottom: 25px;
       }
     }
     main.container-fluid {
       padding-left: 0px;
       padding-right: 0px;
       #productShowPage {
-        background-color: pink;
+        background-color: $body-background-color;
         height:100vh;
         width: 100%;
+        padding-top: 50px;
       }
     }
     .capsule {
       max-width: 960px;
       margin: 0 auto;
     }
+    #materialShowPage {
+      background-color: $body-background-color;
+      width: 100%;
+      padding-bottom: 25px;
+    }
+
+    #home {
+      padding-top: 50px;
+
+    }
+
+    #welcome {
+      background-color: $white;
+      // color: #C02339;
+      width: 100%;
+      height: 300px;
+padding-bottom: 50px;
+      h1 {
+        margin-top: 0px;
+        padding-top: 25px;
+      }
+      .col-md-8{
+        padding-top: 25px;
+      }
+
+    }
+
+    #impact {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    #url {
+      width: 100%;
+      height: 200px;
+      padding-bottom: 25px;
+    }
+
+  #authPage {
+    background-color: $white;
+    height:300vh;
+    width: auto;
+  }
+
+  #forms {
+    height: 75px;
+    width: 60%;
+    font-size: 14px;
+    position: absolute;
+    top: 25%;
+    margin: 0px;
+    display: block;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
 }
