@@ -5,12 +5,20 @@ angular
 MaterialsController.$inject = ['Material', '$state', '$stateParams'];
 function MaterialsController(Material, $state, $stateParams){
 
-  var self           = this;
-  self.all           = [];
-  self.getMaterials  = getMaterials;
-  self.getMaterial   = getMaterial;
-  self.hoverIn       = hoverIn;
-  self.hoverOut      = hoverOut;
+  var self                      = this;
+  self.all                      = [];
+  self.getMaterials             = getMaterials;
+  self.getMaterial              = getMaterial;
+  self.toggleOn                 = toggleOn;
+  self.toggleOff                = toggleOff;
+  self.chemistry_heading        = true;
+  self.chemistry_score          = false;
+  self.ghg_heading              = true;
+  self.ghg_score                = false;
+  self.water_heading            = true;
+  self.water_score              = false;
+  self.waste_heading            = true;
+  self.waste_score              = false;
 
 
   function getMaterials() {
@@ -26,13 +34,14 @@ function getMaterial() {
   });
 }
 // Materials Show Page
-function hoverIn(){
-  console.log("hey");
-   self.hoverEdit = true;
-   console.log(self.hoverEdit);
+function toggleOn(section) {
+     self[section+'_heading'] = false;
+     self[section+'_score']   = true;
 }
-function hoverOut(){
-    self.hoverEdit = false;
+
+function toggleOff(section){
+  self[section+'_heading'] = true;
+  self[section+'_score']   = false;
 }
 
   getMaterials();

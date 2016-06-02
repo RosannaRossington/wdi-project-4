@@ -2,30 +2,46 @@
   <h1>{{ materials.material.material.material_name }}</h1>
   <div class="row">
       <div class="caption">
-        <div class="col-md-4 showGrid" id="showGridLocation">
+
+      <div class="col-md-4 showGrid" id="showGridLocation">
         <h2 class="media-heading"> {{ materials.material.material.geographic_location }}</h2>
       </div>
-        <div class="col-md-4 showGrid" id="showGridChemistry" ng-mouseover="materials.hoverIn()" ng-mouseleave="materials.hoverOut()">
-        <h2 class="media-heading"> Chemistry Score</h2>
-        <span ng-show="materials.hoverEdit" ng-hide="">
+
+      <div class="col-md-4 showGrid" id="showGridChemistry" ng-mouseover="materials.toggleOn('chemistry')" ng-mouseleave="materials.toggleOff('chemistry')">
+        <h2 class="media-heading" ng-show="materials.chemistry_heading"> Chemistry Score</h2>
+        <span ng-show="materials.chemistry_score">
           <h2> {{ materials.material.material.chemistry_total }}</h2>
         </span>
       </div>
-        <div class="col-md-4 showGrid" id="showGridFootprint"ng-mouseover="materials.hoverIn()" ng-mouseleave="materials.hoverOut()">
-        <h2 class="media-heading"> GHG Score</h2>
-            <span ng-show="materials.hoverEdit" ng-hide="">
-              <h2>{{ materials.material.material.energy_ghg_emissions_intensity_total }}</h2>
-            </span>
+
+      <div class="col-md-4 showGrid" id="showGridFootprint" ng-mouseover="materials.toggleOn('ghg')" ng-mouseleave="materials.toggleOff('ghg')">
+        <h2 class="media-heading" ng-show="materials.ghg_heading"> GHG Intensity</h2>
+        <span ng-show="materials.ghg_score">
+          <h2>{{ materials.material.material.energy_ghg_emissions_intensity_total }}</h2>
+        </span>
       </div>
-        <div class="col-md-4 showGrid" id="showGridWater">
-        <h2 class="media-heading"> Water Score {{ materials.material.material.water_land_intensity_total }}</h2>
+
+      <div class="col-md-4 showGrid" id="showGridWater" ng-mouseover="materials.toggleOn('water')" ng-mouseleave="materials.toggleOff('water')">
+        <h2 class="media-heading" ng-show="materials.water_heading"> Water Intensity</h2>
+          <span ng-show="materials.water_score">
+            <h2> {{ materials.material.material.water_land_intensity_total }}</h2>
+          </span>
       </div>
-      <div class="col-md-4 showGrid" id="showGridWaste">
-        <h2 class="media-heading"> Waste Score {{ materials.material.material.physical_waste_total }}</h2>
+
+      <div class="col-md-4 showGrid" id="showGridWaste" ng-mouseover="materials.toggleOn('waste')" ng-mouseleave="materials.toggleOff('waste')">
+        <h2 class="media-heading" ng-show="materials.waste_heading"> Waste Score</h2>
+        <span ng-show="materials.waste_score">
+         <h2>{{ materials.material.material.physical_waste_total }}</h2>
+        </span>
       </div>
-      <div class="col-md-4 showGrid">
-        <h2 class="media-heading">Total Score<h4> {{ materials.material.material.total_score }}</h4></h2>
+
+      <div class="col-md-4 showGrid" id="showGridTotal" ng-mouseover="materials.toggleOn('total')" ng-mouseleave="materials.toggleOff('total')">
+        <h2 class="media-heading" ng-show="materials.total_heading"> Total Score</h2>
+        <span ng-show="materials.waste_score">
+           <h2><strong> {{ materials.material.material.total_score }}</strong></h2>
+        </span>
       </div>
+
     </div>
   </div>
 </section>

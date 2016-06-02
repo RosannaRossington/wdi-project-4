@@ -7945,23 +7945,39 @@ button.close {
 
 /*# sourceMappingURL=bootstrap.css.map */
 body {
-  background: #CCB499;
   text-align: center;
   font-family: Arial;
-  color: white;
+  color: black;
+  background-image: url("/images/plants.jpg");
+}
+
+body .navbar-default {
+  background-color: #F8F9F3;
+  font: #002E01;
 }
 
 body .navbar {
+  border-color: transparent;
+  border-radius: 0px;
   border-bottom-color: #002E01;
 }
 
-body h4 {
-  text-align: center;
+body .form-control {
+  height: 75px;
+  font-size: 14px;
+}
+
+body li {
+  list-style-type: none;
+}
+
+body li a {
+  text-decoration: none;
 }
 
 body #showGridLocation:hover {
   color: white;
-  border: solid black 2px;
+  border: solid #A9947F 2px;
   padding: 0;
   min-height: 300px;
   background: #A1DD35;
@@ -7969,7 +7985,7 @@ body #showGridLocation:hover {
 
 body #showGridChemistry:hover {
   color: white;
-  border: solid black 2px;
+  border: solid #A9947F 2px;
   padding: 0;
   min-height: 300px;
   background: #F50F00;
@@ -7977,7 +7993,7 @@ body #showGridChemistry:hover {
 
 body #showGridFootprint:hover {
   color: white;
-  border: solid black 2px;
+  border: solid #A9947F 2px;
   padding: 0;
   min-height: 300px;
   background: #C8A973;
@@ -7985,7 +8001,7 @@ body #showGridFootprint:hover {
 
 body #showGridWater:hover {
   color: white;
-  border: solid black 2px;
+  border: solid #A9947F 2px;
   padding: 0;
   min-height: 300px;
   background: #51737D;
@@ -7993,7 +8009,7 @@ body #showGridWater:hover {
 
 body #showGridWaste:hover {
   color: white;
-  border: solid black 2px;
+  border: solid #A9947F 2px;
   padding: 0;
   min-height: 300px;
   background: Gray;
@@ -8002,10 +8018,10 @@ body #showGridWaste:hover {
 body .showGrid {
   color: white;
   text-align: center;
-  border: solid black 2px;
+  border: solid #A9947F 2px;
   padding: 0;
   min-height: 300px;
-  background: #48572C;
+  background-color: #F8F9F3;
 }
 
 body .showGrid h2 {
@@ -8016,6 +8032,38 @@ body .showGrid h2 {
   font: bold 24px/45px Helvetica, Sans-Serif;
 }
 
+body .showGrid h2 span {
+  color: white;
+  font: bold 24px/45px Helvetica, Sans-Serif;
+  letter-spacing: -1px;
+  padding: 10px;
+}
+
+body #water:hover {
+  background: url("/images/water.jpg");
+}
+
+body .showGridHome {
+  color: #002E01;
+  text-align: center;
+  border: solid #A9947F 2px;
+  padding: 0;
+  min-height: 300px;
+  background-color: #F8F9F3;
+}
+
+body .showGridHome #waste {
+  background-image: url("/images/fumes.jpg");
+}
+
 body #materialShowPage {
   background-color: blue;
+}
+
+body #materialsIndex {
+  background-color: green;
+}
+
+body #materialsIndex input {
+  width: 100%;
 }

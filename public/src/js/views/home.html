@@ -1,20 +1,48 @@
-<h1>P R O V I D E N C E</h1>
-<div class="container">
-<p>How much damage will the item you're looking at have on the environment?</p>
+<div id="home">
+    <h1>P R O V I D E N C E</h1>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <p>How much damage will the item you're looking at have on the environment?</p>
 
-<p> This test will score the journey of the raw materials to a finished textile, ready to be shipped for the company to use.</p>
+        <p>Score the environmental impact of the raw materials used to a finished textile. A higher score, out of fifty, represents a better performance, considering four key impact areas.</p>
+    </div>
+    <div class="col-md-2">
+    </div>
+    <!-- ********4 key areas********* -->
+    <div class="col-md-12">
+        <h4>The four impact areas.</h4>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 showGridHome" id="chemistry">
+                    <h3>Chemistry</h3>
+                </div>
+                <div class="col-md-6 showGridHome" id="energy">
+                    <h3>Energy and GHG Intensity</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 showGridHome" id="water">
+                    <h3>Water and Land Use Intensity</h3>
+                </div>
+                <div class="col-md-6 showGridHome" id="waste">
+                    <h3>Physical Waste</h3>
+                </div>
+            </div>
+        </div>
 
-<p>A higher score represents a better performance in the selected environmental impact area and a total will be out of 50.</p>
+        <!-- ********Denim Journey********* -->
+
+        <!-- ********ProudctURl search********* -->
+    <div class="col-md-12">
+        <form id="searchForm" name="searchForm" ng-submit="users.getProductMaterials()" novalidate>
+
+            <div class="form-group">
+                <label for="productURL"></label>
+                <input type="text" class="form-control" id="productURL" placeholder="Enter a product url and find out more about its sustainability..." ng-model="users.productUrl">
+            </div>
+
+            <button type="submit" class="btn btn-default" style="position: absolute; left: -9999px; width: 1px; height: 1px;">Submit</button>
+        </form>
+    </div>
 </div>
-
-<!-- ********ProudctURl search********* -->
-
-<form id="searchForm" name="searchForm" ng-submit="users.getProductMaterials()" novalidate>
-
-  <div class="form-group">
-    <label for="productURL">Product Url</label>
-    <input type="text" class="form-control" id="productURL" placeholder="Enter a product url and find out more about its sustainability..." ng-model="users.productUrl">
-  </div>
-
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>

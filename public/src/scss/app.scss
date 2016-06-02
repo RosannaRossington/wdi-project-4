@@ -1,17 +1,30 @@
 @import "_bower";
 @import "_variables";
 body {
-  background: $show-color;
-  text-align: center;
-  font-family: Arial;
-  // background-image: url("/images/plants.jpg");
-  color: $font-color;
+  .navbar-default {
+    background-color: $white;
+    font: $dark-green;
+  }
   .navbar {
+    border-color: transparent;
+    border-radius: 0px;
     border-bottom-color:$dark-green;
   }
-  h4 {
     text-align: center;
+    font-family: Arial;
+    color: black;
+    background-image: url("/images/plants.jpg");
+
+  .form-control {
+    height: 75px;
+    font-size: 14px;
   }
+    li {
+      list-style-type: none;
+      a {
+        text-decoration: none;
+      }
+    }
 
   // Material Show Page
   #showGridLocation:hover {
@@ -43,7 +56,6 @@ body {
     border: $show-border;
     padding: 0;
     min-height: 300px;
-    //background-image: url("/images/water.jpg");
     background:$sea-blue;
   }
   #showGridWaste:hover {
@@ -52,7 +64,6 @@ body {
     padding: 0;
     min-height: 300px;
     background: Gray;
-    //background-image: url("/images/fumes.jpg");
   }
     .showGrid {
       color: $font-color;
@@ -60,22 +71,49 @@ body {
       border: $show-border;
       padding: 0;
       min-height: 300px;
-      background:$body-background-color;
+      background-color:$white;
       h2 {
          position: absolute;
          top: 50%;
          left: 0;
          width: 100%;
          font:bold 24px/45px Helvetica, Sans-Serif;
-        //  span {
-        //    color: wht;
-        //    font: bold 24px/45px Helvetica, Sans-Serif;
-        //    letter-spacing: -1px;
-        //    padding: 10px;
-        // }
+         span {
+           color: white;
+           font: bold 24px/45px Helvetica, Sans-Serif;
+           letter-spacing: -1px;
+           padding: 10px;
+        }
+      }
+    }
+    #water:hover {
+        background: url("/images/water.jpg");
+      }
+    .showGridHome {
+      color: $dark-green;
+      text-align: center;
+      border: $show-border;
+      padding: 0;
+      min-height: 300px;
+      background-color: $white;
+      #chemistry {
+
+      }
+      #energy {
+
+      }
+
+      #waste {
+        background-image: url("/images/fumes.jpg");
       }
     }
     #materialShowPage {
       background-color: blue;
+    }
+    #materialsIndex {
+      background-color: green;
+      input {
+        width: 100%;
+      }
     }
 }
