@@ -1,24 +1,30 @@
-<section ng-controller="MaterialsController as materials">
+<section ng-controller="MaterialsController as materials" >
   <h1>{{ materials.material.material.material_name }}</h1>
   <div class="row">
       <div class="caption">
         <div class="col-md-4 showGrid" id="showGridLocation">
-        <p class="media-heading"> Location: {{ materials.material.material.geographic_location }}</p>
+        <h2 class="media-heading"> {{ materials.material.material.geographic_location }}</h2>
       </div>
-        <div class="col-md-4 showGrid" id="showGridChemistry">
-        <p class="media-heading"> Chemistry Score: {{ materials.material.material.chemistry_total }}</p>
+        <div class="col-md-4 showGrid" id="showGridChemistry" ng-mouseover="materials.hoverIn()" ng-mouseleave="materials.hoverOut()">
+        <h2 class="media-heading"> Chemistry Score</h2>
+        <span ng-show="materials.hoverEdit" ng-hide="">
+          <h2> {{ materials.material.material.chemistry_total }}</h2>
+        </span>
       </div>
-        <div class="col-md-4 showGrid" id="showGridFootprint">
-        <p class="media-heading"> GHG Score: {{ materials.material.material.energy_ghg_emissions_intensity_total }}</p>
+        <div class="col-md-4 showGrid" id="showGridFootprint"ng-mouseover="materials.hoverIn()" ng-mouseleave="materials.hoverOut()">
+        <h2 class="media-heading"> GHG Score</h2>
+            <span ng-show="materials.hoverEdit" ng-hide="">
+              <h2>{{ materials.material.material.energy_ghg_emissions_intensity_total }}</h2>
+            </span>
       </div>
         <div class="col-md-4 showGrid" id="showGridWater">
-        <p class="media-heading"> Water Score: {{ materials.material.material.water_land_intensity_total }}</p>
+        <h2 class="media-heading"> Water Score {{ materials.material.material.water_land_intensity_total }}</h2>
+      </div>
+      <div class="col-md-4 showGrid" id="showGridWaste">
+        <h2 class="media-heading"> Waste Score {{ materials.material.material.physical_waste_total }}</h2>
       </div>
       <div class="col-md-4 showGrid">
-        <p class="media-heading"> Waste Score: {{ materials.material.material.physical_waste_total }}</p>
-      </div>
-      <div class="col-md-4 showGrid">
-        <p class="media-heading">Total Score:<h4> {{ materials.material.material.total_score }}</h4></p>
+        <h2 class="media-heading">Total Score<h4> {{ materials.material.material.total_score }}</h4></h2>
       </div>
     </div>
   </div>

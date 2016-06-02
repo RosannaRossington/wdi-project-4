@@ -1,3 +1,6 @@
-<a ui-sref="material({ id: material._id })">
-  <li class="media-heading"> {{users.searchedMaterials}}</li>
-</a>
+
+  <li class="media-heading" ng-repeat="material in users.searchedMaterials">
+    <a ui-sref="material({ id: material._id })">
+    {{material.material_name}}
+    </a>
+  </li>

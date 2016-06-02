@@ -1,12 +1,15 @@
-<h1>SustainableApp</h1>
-<p>Originally developed by Nike The Materials Sustainability Index (MSI) is a "cradle-to-gate" measurement of a material's environmental impact.</p> <p>  The assessment returns a total numeric score on a 50-point scale, with a higher score representing better performance in the selected environmental impact areas. </p>
-<p>The cradle-to-gate life cycle considers the journey of raw materials to a finished textile, ready to be shipped to a company.</p>
-<p>All materials are scored using the same environmental impact areas and scale to enable relative comparisons.</p>
+<h1>P R O V I D E N C E</h1>
+<div class="container">
+<p>How much damage will the item you're looking at have on the environment?</p>
 
+<p> This test will score the journey of the raw materials to a finished textile, ready to be shipped for the company to use.</p>
+
+<p>A higher score represents a better performance in the selected environmental impact area and a total will be out of 50.</p>
+</div>
 
 <!-- ********ProudctURl search********* -->
 
-<form id="search" name="searchForm" ng-submit="users.getProductMaterials()" novalidate>
+<form id="searchForm" name="searchForm" ng-submit="users.getProductMaterials()" novalidate>
 
   <div class="form-group">
     <label for="productURL">Product Url</label>
@@ -15,15 +18,3 @@
 
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
-
-<!-- ********Material search bar********* -->
-<input type="text" ng-model="searchBox">
-  <section ng-controller="MaterialsController as materials">
-    <ul class="media" ng-repeat="material in materials.all | filter:searchBox">
-      <div class="media-body">
-      <a ui-sref="material({ id: material._id })">
-        <li class="media-heading">{{ material.material_name }}</li>
-      </a>
-      </div>
-    </ul>
-  </section>

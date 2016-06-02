@@ -79,7 +79,7 @@ function UsersController(User, Material, CurrentUser, $state, $stateParams, API,
    var materials = self.cleanProducts(productMaterial);
    Material.search(materials, function(response) {
      self.searchedMaterials = response.materials;
-     console.log(self.searchedMaterials);
+     console.log("Searched", self.searchedMaterials);
     $state.go('productMaterial');
    });
  }

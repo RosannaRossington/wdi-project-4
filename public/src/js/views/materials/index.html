@@ -2,13 +2,15 @@
   <h1>Materials</h1>
 
   <p> Base Material Score resulting from an evaluation of the four environmental impact areas <h4>Chemistry, Energy and GHG Intensity, Water and Land Use Intensity, and Physical Waste</h4></p>
-  <ul class="media-list">
-    <ul class="media" ng-repeat="material in materials.all">
+
+<!-- ********Material search bar********* -->
+<input type="text" ng-model="searchBox">
+  <section ng-controller="MaterialsController as materials">
+    <ul class="media" ng-repeat="material in materials.all | filter:searchBox">
       <div class="media-body">
       <a ui-sref="material({ id: material._id })">
-        <li class="media-heading"> Material - {{ material.material_name }}</li>
+        <li class="media-heading">{{ material.material_name }}</li>
       </a>
       </div>
     </ul>
-  </ul>
-</section>
+  </section>

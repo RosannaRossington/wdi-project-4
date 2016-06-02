@@ -9,6 +9,9 @@ function MaterialsController(Material, $state, $stateParams){
   self.all           = [];
   self.getMaterials  = getMaterials;
   self.getMaterial   = getMaterial;
+  self.hoverIn       = hoverIn;
+  self.hoverOut      = hoverOut;
+
 
   function getMaterials() {
     Material.query(function(data){
@@ -22,6 +25,16 @@ function getMaterial() {
         console.log("this is material", res);
   });
 }
+// Materials Show Page
+function hoverIn(){
+  console.log("hey");
+   self.hoverEdit = true;
+   console.log(self.hoverEdit);
+}
+function hoverOut(){
+    self.hoverEdit = false;
+}
+
   getMaterials();
   getMaterial();
 
