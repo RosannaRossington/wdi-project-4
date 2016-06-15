@@ -67,7 +67,7 @@ function UsersController(User, Material, CurrentUser, $state, $stateParams, API,
 
   function getProductMaterials() {
     if (!self.productUrl) return console.log("no url!");
-    $http.post(API + "/scrape/netaporter", {url: self.productUrl})
+    $http.post("https://localhost:3000/api/scrape/netaporter", {url: self.productUrl})
       .then(function(response) {
         self.productMaterial = response.data.text;
         checkProductMaterials(self.productMaterial);
