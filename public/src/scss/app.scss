@@ -18,7 +18,7 @@ a {
   text-decoration: none;
 }
 
-h7 {
+h6 {
   font-style: italic;
 }
 
@@ -63,47 +63,47 @@ h5 {
   // Material Show Page
   #showGridLocation:hover {
     color: $font-color;
-    border: $show-border;
+    border: $fabric-border;
     padding: 0;
     min-height: 300px;
-    background: #B0D295;
-    //background-image: url("/images/jungle.jpg");
+    //background: #B0D295;
+    background-image: url("/images/location.jpg");
   }
   #showGridChemistry:hover {
     color: $font-color;
-    border: $show-border;
+    border: $fabric-border;
     padding: 0;
     min-height: 300px;
-    background: #C02339;
-    //background-image: url("/images/chemicals.jpg");
+    //background: #C02339;
+    background-image: url("/images/chemicals.jpg");
   }
   #showGridFootprint:hover {
     color: $font-color;
-    border: $show-border;
+    border: $fabric-border;
     padding: 0;
     min-height: 300px;
-    background: #31986D;
-    //background-image: url("/images/jungle.jpg");
+    //background: #31986D;
+    background-image: url("/images/footprint.jpg");
   }
   #showGridWater:hover {
     color: $font-color;
-    border: $show-border;
+    border: $fabric-border;
     padding: 0;
     min-height: 300px;
-    background:#BEDFD8;
-    //background-image: url("/images/water2.jpg");
+    //background:#BEDFD8;
+    background-image: url("/images/water2.jpg");
   }
   #showGridWaste:hover {
     color: $font-color;
-    border: $show-border;
+    border: $fabric-border;
     padding: 0;
     min-height: 300px;
-    background: #D2C1D2;
-    //background-image: url("/images/fumes.jpg");
+    //background: #D2C1D2;
+    background-image: url("/images/fumes.jpg");
   }
   #showGridTotal:hover {
     color: $font-color;
-    border: $show-border;
+    border: $fabric-border;
     padding: 0;
     min-height: 300px;
     background: #D1AB08;
