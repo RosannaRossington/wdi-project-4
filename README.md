@@ -1,5 +1,11 @@
 #Providence
 
+_/ˈprɒvɪd(ə)ns/_
+noun
+1.the protective care of nature as a spiritual power.
+
+##How much damage do your clothes have on the environment?
+
 [Providence](https://the-providence.herokuapp.com/)<p>
 ![Home](./README-screenshots/ProvidenceHome.png)
 ###Introduction
