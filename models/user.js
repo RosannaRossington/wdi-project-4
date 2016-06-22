@@ -24,43 +24,43 @@ userSchema.methods.validatePassword = function(password){
 // Setup a virtual field of password so that we can use that instead of passwordHash
 userSchema.virtual("password")
 .set(function(password){
-
   this._password    = password;
   // Save the hashed password to the field passwordHash
   this.passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 });
 
 userSchema.virtual('passwordConfirmation')
-  .set(function(passwordConfirmation){
-    this._passwordConfirmation = passwordConfirmation;
-  });
+.set(function(passwordConfirmation){
+  this._passwordConfirmation = passwordConfirmation;
+});
 
-  // ***** VALIDATIONS ***** //
-  userSchema.path("passwordHash")
-  .validate(function(){
-    if (this.isNew) {
-      if (!this._password) {
-        this.invalidate("password", "required");
-      }
-      if (this._password.length < 6) {
-        this.invalidate("password", "Sorry, your password must be greater than 6 characters");
-      }
-      if (this._password !== this._passwordConfirmation) {
-        this.invalidate("passwordConfirmation", "Sorry, your passwords must match");
-      }
+// ***** VALIDATIONS ***** //
+userSchema.path("passwordHash")
+.validate(function(){
+  if (this.isNew) {
+    if (!this._password) {
+      this.invalidate("password", "required");
     }
-  });
+    if (this._password.length < 6) {
+      this.invalidate("password", "Sorry, your password must be greater than 6 characters");
+    }
+    if (this._password !== this._passwordConfirmation) {
+      this.invalidate("passwordConfirmation", "Sorry, your passwords must match");
+    }
+  }
+});
 
-  userSchema.path("email")
-  .validate(function(email) {
-    if (!validator.isEmail(email)) {
-      this.invalidate("email", "You must enter a valid email address");
-    }
-  });
-  userSchema.set('toJSON', {
+userSchema.path("email")
+.validate(function(email) {
+  if (!validator.isEmail(email)) {
+    this.invalidate("email", "You must enter a valid email address");
+  }
+});
+
+userSchema.set('toJSON', {
   transform: function(doc, ret, options){
-      delete ret.passwordHash;
-      return ret;
+    delete ret.passwordHash;
+    return ret;
   }
 });
 
