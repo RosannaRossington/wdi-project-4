@@ -25,6 +25,11 @@ app.use(methodOverride(function(req, res) {
 app.use(passport.initialize());
 app.use(cors());
 
+app.use(function(req, res, next){
+  console.log("HERE", req.url);
+  next();
+});
+
 app.use('/api', expressJWT({ secret: config.secret })
 .unless({
   path: [

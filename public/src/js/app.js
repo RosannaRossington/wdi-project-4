@@ -1,6 +1,6 @@
 angular
   .module('SustainableApp', ['ngResource', 'ui.router','angular-jwt'])
-  .constant('API', 'https://the-providence.herokuapp.com/api')
+  .constant('API', window.location.origin + "/api")
   .config(Router)
   .config(function($httpProvider) {
       $httpProvider.interceptors.push('authInterceptor');

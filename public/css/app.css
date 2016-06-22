@@ -7967,6 +7967,11 @@ body a {
   text-decoration: none;
 }
 
+body h6 {
+  font-style: italic;
+  font-family: Questa;
+}
+
 body h5 {
   font-size: 30px;
   font-family: Quicksand;
@@ -8005,47 +8010,47 @@ body .form-control {
 
 body #showGridLocation:hover {
   color: #F8F9F3;
-  border: solid #A9947F 2px;
+  border: solid white 4px;
   padding: 0;
   min-height: 300px;
-  background: #B0D295;
+  background-image: url("/images/location.jpg");
 }
 
 body #showGridChemistry:hover {
   color: #F8F9F3;
-  border: solid #A9947F 2px;
+  border: solid white 4px;
   padding: 0;
   min-height: 300px;
-  background: #C02339;
+  background-image: url("/images/chemicals.jpg");
 }
 
 body #showGridFootprint:hover {
   color: #F8F9F3;
-  border: solid #A9947F 2px;
+  border: solid white 4px;
   padding: 0;
   min-height: 300px;
-  background: #31986D;
+  background-image: url("/images/footprint.jpg");
 }
 
 body #showGridWater:hover {
   color: #F8F9F3;
-  border: solid #A9947F 2px;
+  border: solid white 4px;
   padding: 0;
   min-height: 300px;
-  background: #BEDFD8;
+  background-image: url("/images/water2.jpg");
 }
 
 body #showGridWaste:hover {
   color: #F8F9F3;
-  border: solid #A9947F 2px;
+  border: solid white 4px;
   padding: 0;
   min-height: 300px;
-  background: #D2C1D2;
+  background-image: url("/images/fumes.jpg");
 }
 
 body #showGridTotal:hover {
   color: #F8F9F3;
-  border: solid #A9947F 2px;
+  border: solid white 4px;
   padding: 0;
   min-height: 300px;
   background: #D1AB08;
