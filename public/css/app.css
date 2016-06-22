@@ -8097,6 +8097,7 @@ body .showGrid h3 {
 
 body #materialsIndex {
   background-color: #F8F9F3;
+  height: 350vh;
 }
 
 body #materialsIndex input {
@@ -8114,7 +8115,7 @@ body main.container-fluid {
 
 body main.container-fluid #productShowPage {
   background-color: #48572C;
-  height: 100vh;
+  height: 175vh;
   width: 100%;
   padding-top: 50px;
 }
@@ -8136,7 +8137,7 @@ body #home {
   background-color: #F8F9F3;
   border: solid #A9947F 2px;
   width: 900px;
-  height: 500px;
+  height: 300vh;
   position: absolute;
   top: 50%;
   margin: 50px;
