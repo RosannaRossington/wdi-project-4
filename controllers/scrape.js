@@ -9,6 +9,7 @@ module.exports = {
 function netaporter(req, res) {
   return rp(req.body.url)
     .then(function(body) {
+console.log(body);
       var $ = cheerio.load(body);
       var text;
       $("ul.font-list-copy li").each(function() {

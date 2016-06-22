@@ -79,8 +79,7 @@ function UsersController(User, Material, CurrentUser, $state, $stateParams, API,
    var materials = self.cleanProducts(productMaterial);
    Material.search(materials, function(response) {
      self.searchedMaterials = response.materials;
-     console.log("Searched", self.searchedMaterials);
-    $state.go('productMaterial');
+     $state.go('productMaterial');
    });
  }
 //convert product page materials to words and remove duplicates
