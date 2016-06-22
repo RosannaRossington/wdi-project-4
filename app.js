@@ -9,7 +9,10 @@ var cors            = require("cors");
 var config          = require("./config/config");
 var app             = express();
 
-mongoose.connect(config.database);
+mongoose.connect(config.database, function(){
+  console.log("I'm connected!");
+});
+
 require("./config/passport")(passport);
 
 app.use(morgan('dev'));
