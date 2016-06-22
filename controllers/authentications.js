@@ -9,11 +9,9 @@ function register(req, res, next) {
     if (err) return res.status(500).json({err:err});
     if (info) return res.status(401).json(info);
     if (!user) return res.status(401).json(info);
-    
+
     // var payload = {_id: user._id};
     var token   = jwt.sign(user, secret, { expiresIn: 60*60*24 });
-
-console.log("*****************************", token);
 
     return res.status(200).json({
       success: true,

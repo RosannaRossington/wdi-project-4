@@ -10,31 +10,23 @@ module.exports = function(passport){
     session: false
   }, function(req, email, password, done){
 
-console.log("****************************", email, password);
-
     User.findOne({ email: email }, function(err, user){
-console.log(err);
       if (err) return done(err, false, { message: 'Something went wrong'});
       if (user) return done(null, false, { message: 'Please choose another email' });
 
-console.log(user);
+      var newUser = new User({
+        firstName: req.body.firstName,
+        lastName:  req.body.lastName,
+        image:     req.body.image,
+        username:  req.body.username,
+        email:     req.body.email,
+        password:  req.body.password,
+        passwordConfirmation: req.body.passwordConfirmation
+      });
 
-       var newUser = new User({
-         firstName: req.body.firstName,
-         lastName:  req.body.lastName,
-         image:     req.body.image,
-         username:  req.body.username,
-         email:     req.body.email,
-         password:  req.body.password,
-         passwordConfirmation: req.body.passwordConfirmation
-       });
-
-console.log(newUser, "(((((((((((((((((())))))))))))))))))");
-
-       newUser.save(function(err, user){
+      newUser.save(function(err, user){
          if (err) return done(err, false, { message: "Something went wrong" });
-console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&", user);
-        return done(null, user);
+         return done(null, user);
       });
     });
   }));
