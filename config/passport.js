@@ -10,8 +10,6 @@ module.exports = function(passport){
     session: false
   }, function(req, email, password, done){
 
-console.log("*******************************HEY", email, password);
-
     User.findOne({ 'email': email }, function(err, user){
       if (err) return done(err, false, { message: 'Something went wrong'});
       if (user) return done(null, false, { message: 'Please choose another email' });
@@ -28,6 +26,7 @@ console.log("*******************************HEY", email, password);
 
        newUser.save(function(err, user){
          if (err) return done(err, false, { message: "Something went wrong" });
+console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&", user);
         return done(null, user);
       });
     });
