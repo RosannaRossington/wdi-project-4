@@ -10,9 +10,10 @@ module.exports = function(passport){
     session: false
   }, function(req, email, password, done){
 
-console.log(email, password);
+console.log("****************************", email, password);
 
-    User.findOne({ 'email': email }, function(err, user){
+    User.findOne({ email: email }, function(err, user){
+console.log(err);
       if (err) return done(err, false, { message: 'Something went wrong'});
       if (user) return done(null, false, { message: 'Please choose another email' });
 
