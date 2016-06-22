@@ -8097,7 +8097,6 @@ body .showGrid h3 {
 
 body #materialsIndex {
   background-color: #F8F9F3;
-  height: 350vh;
 }
 
 body #materialsIndex input {
@@ -8137,7 +8136,7 @@ body #home {
   background-color: #F8F9F3;
   border: solid #A9947F 2px;
   width: 900px;
-  height: 300vh;
+  height: 500px;
   position: absolute;
   top: 50%;
   margin: 50px;
